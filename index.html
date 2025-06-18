@@ -8,10 +8,11 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
-    <header>
+<body>    <header>
         <nav>
-            <h2 class="logo">Rubyx</h2>
+            <div class="logo">
+                <img src="images/logo/rubyx_noBackground.png" alt="Rubyx Logo">
+            </div>
             <div class="menu-icon" id="menu-icon">
                 <i class="fas fa-bars"></i>
             </div>
@@ -25,8 +26,20 @@
             </ul>
         </nav>
         <section id="home" class="hero">
-            <h1>Welcome to Rubyx</h1>
-            <p>Your gateway to mastering programming languages, backend development, and more!</p>
+            <div class="hero-container">
+                <div class="hero-image-slider">
+                    <!-- Images will be added via JavaScript -->
+                </div>
+                <div class="hero-content">
+                    <p class="welcome-text">Welcome to</p>
+                    <h1>Rubyx</h1>
+                    <p class="institute-name">IT INSTITUTE</p>
+                    <div class="welcome-description">
+                        <p>Your gateway to mastering programming languages, backend development, and becoming an industry-ready IT professional. Join us to transform your tech career with expert guidance and hands-on learning.</p>
+                    </div>
+                    <a href="#enroll" class="get-started-btn">GET STARTED</a>
+                </div>
+            </div>
         </section>
     </header>
 
@@ -181,18 +194,61 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="enroll" class="enroll-form">
-        <h2>Book Your Appointment</h2>
-        <form id="enroll-form">
-            <input type="text" id="name" placeholder="Your Full Name" required>
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <button type="submit" id="submit-btn">Submit</button>
-            <p id="form-message" style="display:none;"></p>
-            <a href="#contact" id="visit-btn" style="display:none;" class="visit-btn">Visit Us Here</a>
-        </form>
+    </section>    <section id="enroll" class="enroll-form">
+        <div class="enroll-container">
+            <div class="enroll-content">
+                <h2>Book Your Appointment</h2>
+                <p class="enroll-subtitle">Fill the form below to schedule a consultation with our expert team</p>
+                <div class="form-container">                    <form id="enroll-form">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Full Name" required>
+                            <p class="error-message" id="name-error"></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="phone-input-container">
+                                <div class="country-code-dropdown">
+                                    <div class="selected-code" id="selected-code">
+                                        <img src="https://flagcdn.com/w20/in.png" alt="India flag" id="selected-flag">
+                                        <span id="selected-code-text">+91</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="country-dropdown" id="country-dropdown">
+                                        <div class="country-option" data-code="+91" data-country="in">
+                                            <img src="https://flagcdn.com/w20/in.png" alt="India flag">
+                                            <span>India (+91)</span>
+                                        </div>
+                                        <div class="country-option" data-code="+1" data-country="us">
+                                            <img src="https://flagcdn.com/w20/us.png" alt="US flag">
+                                            <span>United States (+1)</span>
+                                        </div>
+                                        <div class="country-option" data-code="+1" data-country="ca">
+                                            <img src="https://flagcdn.com/w20/ca.png" alt="Canada flag">
+                                            <span>Canada (+1)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                            </div>
+                            <p class="error-message" id="phone-error"></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email Address" required>
+                            <p class="error-message" id="email-error"></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" id="submit-btn">Book Appointment</button>
+                        </div>
+                    </form>
+                    
+                    <div id="form-response" class="form-response">
+                        <!-- Submission states will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
