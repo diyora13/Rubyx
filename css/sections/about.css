@@ -1,0 +1,104 @@
+/* About Section Styles */
+.about {
+    background-color: #f9fafb;
+    padding: 5vh 5%;
+    min-height: 100vh; /* Make it full screen */
+    display: flex;
+    flex-direction: column;
+}
+
+.about h2 {
+    margin-bottom: 3vh; /* Reduce space after the section title */
+}
+
+.about-tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns for better layout */
+    gap: 20px; /* Reduced gap */
+    max-width: 1400px; /* Increased max width */
+    margin: 0 auto;
+    flex-grow: 1; /* Allow it to take available space */
+}
+
+.about-tile {
+    background: white;
+    padding: 20px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Remove the line after h2 elements in about tiles */
+.about-tile h2::after {
+    display: none;
+}
+
+/* Adjust the icon size and reduce space between icon and heading */
+.about-tile h2 {
+    font-size: 2.5rem;
+    margin-bottom: 5px; /* Reduced from default */
+}
+
+.about-tile:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: #2575fc;
+}
+
+.about-tile h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 0;
+    color: #2575fc;
+    position: relative;
+}
+
+.about-tile p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive About Section */
+@media (max-width: 1200px) {
+    .about-tiles {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .about-tiles {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 40px 5%;
+    }
+    
+    .about-tiles {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 15px;
+    }
+    
+    .about-tile {
+        padding: 15px;
+    }
+    
+    .about-tile h2 {
+        font-size: 2rem;
+        margin-bottom: 3px;
+    }
+    
+    .about-tile h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+}

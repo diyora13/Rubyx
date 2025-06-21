@@ -1,0 +1,225 @@
+/* Hero Section */
+.hero {
+    padding: 0;
+    height: calc(100vh - 100px); /* Adjusted for navbar + margin */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 10px; /* Extra spacing from navbar */
+}
+
+.hero-container {
+    display: flex;
+    width: 95%;
+    height: 95%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+}
+
+.hero-image-slider {
+    flex: 0 0 39%; /* Reduced slightly to create space between sections */
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-right: none; /* Removed border, using margin instead */
+    margin-right: 1%; /* Creates space between left and right sections */
+}
+
+.hero-image-slider img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    padding: 15px;
+}
+
+.hero-image-slider img.active {
+    opacity: 1;
+}
+
+.hero-content {
+    flex: 0 0 59%; /* Reduced slightly to account for the middle space */
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    color: #333;
+    background-color: white;
+    margin-left: 1%; /* Creates space between left and right sections */
+}
+
+.welcome-text {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    color: #777;
+    font-weight: 400;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #2575fc;
+}
+
+.hero h1.class-name {
+    font-size: 4.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    color: #2575fc;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    position: relative;
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.05);
+}
+
+.institute-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    color: #333;
+    display: inline-block;
+    background-color: #f7f7f7;
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+.welcome-description {
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 15px;
+    border-left: 3px solid rgba(37, 117, 252, 0.2);
+}
+
+.welcome-description p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 600px;
+    color: #555;
+}
+
+.get-started-btn {
+    display: inline-block;
+    background-color: #2575fc;
+    color: white;
+    padding: 6px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 40px;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+}
+
+.get-started-btn:hover {
+    background-color: #1a66e0;
+    transform: translateY(-3px);
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+/* Responsive Hero Section */
+@media (max-width: 1200px) {
+    .hero-content {
+        padding: 40px 50px;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.4rem;
+    }
+    
+    .institute-name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero {
+        height: auto;
+        padding: 60px 0;
+    }
+    
+    .hero-container {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+    }
+    
+    .hero-image-slider, .hero-content {
+        flex: 1;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .hero-image-slider {
+        height: 300px;
+        min-height: 300px;
+    }
+    
+    .hero-content {
+        padding: 40px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero-container {
+        width: 95%;
+    }
+    
+    .hero-image-slider {
+        height: 250px;
+        min-height: 250px;
+    }
+    
+    .hero-content {
+        padding: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.2rem;
+    }
+    
+    .institute-name {
+        font-size: 1.1rem;
+    }
+}

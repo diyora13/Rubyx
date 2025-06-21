@@ -1,0 +1,569 @@
+/* Enroll/Contact Form Section Styles */
+.enroll-form {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    color: #333;
+    padding: 30px 5% 80px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.enroll-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eaeaea;
+    position: relative;
+}
+
+.enroll-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(37, 117, 252, 0.05);
+    z-index: -1;
+}
+
+.enroll-container::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(37, 117, 252, 0.05);
+    z-index: -1;
+}
+
+.enroll-content {
+    padding: 20px;
+}
+
+.enroll-form h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2575fc;
+    position: relative;
+}
+
+.enroll-form h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #2575fc;
+    margin: 15px auto 0;
+    border-radius: 3px;
+}
+
+.enroll-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+}
+
+.form-group input:focus, .form-group select:focus {
+    background-color: #ffffff;
+    border-color: #2575fc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+}
+
+/* Input field transitions */
+.form-group input {
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.form-group input:focus {
+    border-left: 3px solid #2575fc;
+}
+
+.form-group input.valid {
+    border-left: 3px solid #48bb78;
+    padding-right: 35px;
+}
+
+.form-group input.invalid {
+    border-left: 3px solid #ff6b6b;
+    padding-right: 35px;
+}
+
+.form-group input.valid + .error-message::before {
+    content: '✓';
+    color: #48bb78;
+    position: absolute;
+    right: 12px;
+    top: 14px;
+    font-size: 16px;
+}
+
+.form-group input.invalid + .error-message::before {
+    content: '!';
+    color: #ff6b6b;
+    position: absolute;
+    right: 15px;
+    top: 14px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2575fc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.2);
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+}
+
+.form-group button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.form-group button:hover::before {
+    left: 100%;
+}
+
+.form-group button:hover {
+    background-color: #1a64e0;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 1.2em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.form-response {
+    text-align: center;
+    margin-top: 30px;
+    padding: 30px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Spinner animation for loading state */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    margin: 0 auto 20px;
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(37, 117, 252, 0.1);
+    border-radius: 50%;
+    border-top: 5px solid #2575fc;
+    animation: spin 1s linear infinite;
+}
+
+.submitting-title {
+    font-size: 1.6rem;
+    color: #2575fc;
+    margin-bottom: 15px;
+}
+
+.submitting-text {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Success state styles */
+.success-state {
+    padding: 15px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(72, 187, 120, 0.2);
+    margin: 0 auto 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Creating a better checkmark using a single pseudo-element */
+.success-icon::before {
+    content: '';
+    width: 25px;
+    height: 40px;
+    border-right: 5px solid #48bb78;
+    border-bottom: 5px solid #48bb78;
+    position: absolute;
+    top: 15px;
+    left: 27px;
+    transform: rotate(45deg);
+    transform-origin: center;
+    animation: checkmark 0.5s ease-in-out forwards;
+}
+
+@keyframes checkmark {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(45deg) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+.success-title {
+    font-size: 1.6rem;
+    color: #2c7a5a;
+    margin-bottom: 15px;
+}
+
+.success-text {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Error state styles */
+.error-state {
+    padding: 15px;
+}
+
+.error-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(245, 101, 101, 0.2);
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.error-icon::before,
+.error-icon::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 40px;
+    background-color: #f56565;
+    top: 20px;
+    left: 37px;
+}
+
+.error-icon::before {
+    transform: rotate(45deg);
+}
+
+.error-icon::after {
+    transform: rotate(-45deg);
+}
+
+.error-title {
+    font-size: 1.6rem;
+    color: #c53030;
+    margin-bottom: 15px;
+}
+
+.error-text {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-us-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #2575fc;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(37, 117, 252, 0.2);
+}
+
+.contact-us-btn:hover {
+    background-color: #1a64e0;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(37, 117, 252, 0.3);
+}
+
+/* Phone input specific styles */
+.phone-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.country-code-dropdown {
+    position: relative;
+    flex: 0 0 140px;
+    margin-right: 10px;
+}
+
+.selected-code {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 13px 15px;
+    cursor: pointer;
+    user-select: none;
+    color: #333;
+}
+
+.selected-code img {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.selected-code i {
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.country-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    display: none;
+    margin-top: 5px;
+}
+
+.country-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.country-option:hover {
+    background-color: #f3f4f6;
+}
+
+.country-option img {
+    width: 20px;
+    margin-right: 8px;
+}
+
+/* Responsive Form */
+@media (max-width: 768px) {
+    .enroll-form {
+        padding: 50px 4%;
+    }
+    
+    .enroll-container {
+        max-width: 95%;
+    }
+    .enroll-form {
+        padding: 60px 5%;
+    }
+    
+    .enroll-content {
+        padding: 30px 20px;
+    }
+    
+    .enroll-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .phone-input-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .country-code-dropdown {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .enroll-form {
+        padding: 30px 3%;
+    }
+    
+    .enroll-content {
+        padding: 25px 20px;
+    }
+    
+    .enroll-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .enroll-subtitle {
+        font-size: 1rem;
+    }
+    
+    .form-group input, .form-group select {
+        padding: 12px 14px;
+    }
+    
+    .country-code-dropdown {
+        flex: 0 0 120px;
+    }
+    
+    .selected-code {
+        padding: 11px 12px;
+    }
+    
+    /* Responsive styles for form-response */
+    .form-response {
+        padding: 20px 15px;
+    }
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border-width: 4px;
+    }
+    
+    .submitting-title,
+    .success-title,
+    .error-title {
+        font-size: 1.4rem;
+    }
+    
+    .success-icon,
+    .error-icon {
+        width: 60px;
+        height: 60px;
+    }
+      .success-icon::before {
+        width: 20px;
+        height: 32px;
+        border-right: 4px solid #48bb78;
+        border-bottom: 4px solid #48bb78;
+        top: 11px;
+        left: 20px;
+    }
+    
+    .error-icon::before,
+    .error-icon::after {
+        height: 30px;
+        top: 15px;
+        left: 27px;
+    }
+    
+    .contact-us-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        display: block;
+        margin: 10px auto;
+        max-width: 200px;
+    }
+}
+
+/* Ensure the form section doesn't exceed viewport width */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Form validation styling */
+.form-group input.invalid {
+    border-color: #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.05);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.form-group input.valid {
+    border-color: #48bb78;
+    background-color: rgba(72, 187, 120, 0.05);
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+}
+
+/* Animation for error messages */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.form-group input.invalid + .error-message {
+    animation: shake 0.6s ease-in-out;
+}

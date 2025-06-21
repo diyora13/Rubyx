@@ -1,0 +1,28 @@
+/* Main Stylesheet - Imports all section CSS files */
+
+/* General Styles & Reset */
+@import url('sections/general.css');
+
+/* Header & Navigation */
+@import url('sections/header.css');
+
+/* Hero Section */
+@import url('sections/hero.css');
+
+/* About Section */
+@import url('sections/about.css');
+
+/* Courses Section */
+@import url('sections/courses.css');
+
+/* Tutors Section */
+@import url('sections/tutors.css');
+
+/* Mentors Section */
+@import url('sections/mentors.css');
+
+/* Enroll Form */
+@import url('sections/enroll.css');
+
+/* Footer */
+@import url('sections/footer.css');
