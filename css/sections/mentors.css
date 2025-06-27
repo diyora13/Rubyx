@@ -264,7 +264,7 @@
 .mentor-alumni {
     color: #666;
     font-size: 0.75rem;
-    margin: 0 0 5px;
+    margin: 0 0 0px;
 }
 
 .mentor-project {
@@ -283,7 +283,7 @@
     border-radius: 4px;
     text-decoration: none;
     font-size: 0.75rem;
-    margin-top: 0px;
+    margin-top: 10px;
     width: 90px;
     align-self: center;
     transition: background-color 0.2s ease;
