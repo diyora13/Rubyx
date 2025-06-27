@@ -1,7 +1,6 @@
 // Image Slider for Hero Section
 const heroImages = [
     'images/logo/rubyx_noBackgro.png',
-    'images/logo/microsoft.png',
 ];
 
 let currentImageIndex = 0;
