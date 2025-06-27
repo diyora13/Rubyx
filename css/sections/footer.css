@@ -25,6 +25,13 @@
     margin-bottom: 10px;
 }
 
+.footer-tagline {
+    font-size: 1.3rem;
+    color: #b9b9b9;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
 .footer-links ul {
     list-style: none;
     padding: 0;
