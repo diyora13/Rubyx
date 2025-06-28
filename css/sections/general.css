@@ -85,3 +85,63 @@ section h2::after {
         margin-bottom: 25px;
     }
 }
+
+/* Additional responsive improvements for navigation */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px; /* Add padding for fixed header navigation */
+    }
+    
+    section {
+        scroll-margin-top: 70px; /* Better scroll anchoring on mobile */
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 0; /* Ensure no extra padding at the top */
+    }
+}
+
+/* Ensure proper section separation on mobile */
+@media (max-width: 991px) {
+    section {
+        position: relative;
+        z-index: 1; /* Ensure proper stacking */
+        clear: both; /* Clear any floats */
+        padding-top: 60px; /* Add more padding at the top */
+        padding-bottom: 60px; /* Add more padding at the bottom */
+        overflow: hidden; /* Prevent margin collapse */
+    }
+    
+    section#about {
+        /* Give about section a distinct appearance */
+        border-top: 3px solid #f0f0f0;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        z-index: 2; /* Higher z-index than other sections */
+    }
+}
+
+@media (max-width: 576px) {
+    section {
+        padding-top: 80px; /* Even more padding on smaller screens */
+    }
+    
+    /* Fix the issue with "Why choose Rubyx?" title specifically */
+    #about h2 {
+        padding-top: 20px;  /* Add padding to push the title down */
+        margin-top: 0;      /* Reset any margins that might cause issues */
+    }
+    
+    /* Add a separator between home and about */
+    #about:before {
+        content: "";
+        display: block;
+        height: 15px;
+        background-color: #f0f0f0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}

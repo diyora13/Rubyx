@@ -5,6 +5,16 @@ header {
     padding-bottom: 0;
     height: 100vh; /* Full viewport height */
     position: relative;
+    margin-bottom: 0; /* Remove bottom margin to ensure exact 100vh total height */
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 991px) {
+    header {
+        height: auto; /* Auto height on mobile instead of 100vh */
+        margin-bottom: 0; /* No margin at bottom to match desktop */
+    }
 }
 
 nav {
@@ -14,7 +24,7 @@ nav {
     padding: 20px 5%;
     flex-wrap: wrap;
     border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 20px; /* Adds space between navbar and hero section */
+    margin-bottom: 0; /* Remove margin for tighter integration with hero */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     background-color: white;
 }
@@ -47,40 +57,127 @@ nav ul li a:hover {
     color: #2575fc;
 }
 
+/* Default menu icon state - hidden on all screens */
 .menu-icon {
-    display: none;
+    display: none; /* Hide by default */
     font-size: 1.5rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Hover state styling */
+.menu-icon:hover {
+    color: #2575fc;
+    background-color: rgba(37, 117, 252, 0.1);
 }
 
 /* Responsive Navigation */
 @media (max-width: 991px) {
     .menu-icon {
-        display: block;
+        display: flex; /* Show and use flex layout on mobile only */
         order: 3;
+        z-index: 100;
+        position: relative;
+    }
+    
+    nav {
+        position: relative;
     }
     
     nav ul {
         width: 100%;
         flex-direction: column;
         text-align: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
-        order: 4;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 99;
+        display: flex;
+        padding: 0;
+        margin: 0;
     }
     
-    nav ul.active {
-        max-height: 300px;
-        margin-top: 20px; /* Add space between sections in mobile view */
+    nav ul.show {
+        max-height: 500px;
+        opacity: 1;
+        visibility: visible;
+        padding: 10px 0;
+        border-top: 1px solid #e5e5e5;
     }
     
     nav ul li {
-        margin: 10px 0;
+        margin: 5px 0;
+        width: 100%;
+        padding: 0 20px;
     }
     
     nav ul li a {
         display: block;
-        padding: 8px 0;
+        padding: 12px 0;
+        color: #333;
+        font-weight: 600;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
     }
+    
+    nav ul li:last-child a {
+        border-bottom: none;
+    }
+    
+    nav ul li a:hover {
+        color: #2575fc;
+        padding-left: 10px;
+    }
+}
+
+/* Sticky Navigation */
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease;
+}
+
+/* Navigation hide/show on scroll */
+.nav-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.sticky-nav:not(.nav-hidden) {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Active state for mobile menu icon when clicked */
+.menu-icon.active {
+    color: #2575fc;
+    background-color: rgba(37, 117, 252, 0.1);
+    transform: rotate(90deg);
 }

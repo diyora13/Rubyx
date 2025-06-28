@@ -285,21 +285,59 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Hamburger menu toggle for mobile
-const menuIcon = document.getElementById('menu-icon');
-const navLinks = document.getElementById('nav-links');
-if (menuIcon && navLinks) {
-    menuIcon.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
-    });    // Hide menu when a link is clicked (for better UX)
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('show');
+document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navLinks = document.getElementById('nav-links');
+    
+    if (menuIcon && navLinks) {
+        menuIcon.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent event from bubbling up
+            navLinks.classList.toggle('show');
+            this.classList.toggle('active'); // Toggle active class for animation
         });
-    });
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('nav')) {
-            navLinks.classList.remove('show');
+        
+        // Hide menu when a link is clicked (for better UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+                menuIcon.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!navLinks.contains(event.target) && !menuIcon.contains(event.target)) {
+                navLinks.classList.remove('show');
+                menuIcon.classList.remove('active');
+            }
+        });
+    }
+    
+    // Sticky Navigation with hide on scroll down, show on scroll up
+    const navbar = document.querySelector('nav');
+    const headerHeight = navbar.offsetHeight;
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        
+        // Add sticky class when scrolled past header
+        if (scrollTop > headerHeight) {
+            navbar.classList.add('sticky-nav');
+            
+            // Hide on scroll down, show on scroll up
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.add('nav-hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('nav-hidden');
+            }
+        } else {
+            navbar.classList.remove('sticky-nav');
+            navbar.classList.remove('nav-hidden');
         }
+        
+        lastScrollTop = scrollTop;
     });
-}
+});

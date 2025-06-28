@@ -32,6 +32,14 @@ const mentors = [
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
+    // {
+    //     name: 'Dhruvil Bhikadiya',
+    //     photo: 'images/mentors/bhikadiya-edited.jpg',
+    //     role: 'Software Developer',
+    //     company: 'zepto.png',
+    //     alumni: 'Alumni, DAIICT',
+    //     linkedin: 'https://www.linkedin.com/'
+    // },
     {
         name: 'Dishant Goti',
         photo: 'images/mentors/goti-edited.jpeg',
@@ -44,7 +52,7 @@ const mentors = [
         name: 'Kaushal Nagani',
         photo: 'images/mentors/kaushal-edited.jpeg',
         role: 'Software Developer',
-        company: 'sumo_logic-edited.jpg',
+        company: 'sumo_logic.jpg',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
@@ -52,7 +60,7 @@ const mentors = [
         name: 'Akash Kothiya',
         photo: 'images/mentors/kothiya-edited.jpeg',
         role: 'Software Developer',
-        company: 'Rippling-edited.jpg',
+        company: 'Rippling.jpg',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
@@ -64,15 +72,6 @@ const mentors = [
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
-    // Commented mentors can be added back as needed
-    // {
-    //     name: 'Dhruvil Bhikadiya',
-    //     photo: 'images/mentors/bhikadiya-edited.jpeg',
-    //     role: 'Software Developer',
-    //     company: 'zepto.png',
-    //     alumni: 'Alumni, DAIICT',
-    //     linkedin: 'https://www.linkedin.com/'
-    // },
     {
         name: 'Akshat Bhayani',
         photo: 'images/mentors/bhayani-edited.jpeg',

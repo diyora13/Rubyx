@@ -1,10 +1,11 @@
 /* About Section Styles */
 .about {
     background-color: #f9fafb;
-    padding: 5vh 5%;
+    padding: 10px 5% 5vh;  /* Increased top padding */
     min-height: 100vh; /* Make it full screen */
     display: flex;
     flex-direction: column;
+    margin-top: 20px; /* Add margin to separate from header */
 }
 
 .about h2 {
@@ -80,25 +81,31 @@
 
 @media (max-width: 480px) {
     .about {
-        padding: 40px 5%;
+        padding: 100px 5% 40px; /* Further increased top padding */
+        min-height: auto; /* Remove minimum height constraint */
+        margin-top: 30px; /* Add more top margin on mobile */
     }
     
     .about-tiles {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+        gap: 10px;
     }
     
     .about-tile {
-        padding: 15px;
+        padding: 10px;
     }
     
     .about-tile h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin-bottom: 3px;
     }
     
     .about-tile h3 {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    
+    .about-tile p {
+        font-size: 0.85rem;
     }
 }

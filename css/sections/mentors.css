@@ -369,14 +369,20 @@
 
 @media (max-width: 576px) {
     .mentor-grid {
-        grid-template-columns: 1fr;
-        max-width: 350px;
+        grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+        gap: 15px;
+        max-width: 100%; /* Use full width */
         margin-left: auto;
         margin-right: auto;
     }
     
     .mentor-card {
-        width: 190px; /* Keep the same width as desktop for mobile */
+        width: 150px; /* Slightly smaller for mobile */
+        margin: 0 auto;
+    }
+    
+    .mentor-photo {
+        height: 90px; /* Slightly smaller photo height */
     }
     
     .mentors-intro {
@@ -397,6 +403,19 @@
     
     .intro-point {
         gap: 10px;
+    }
+    
+    .mentor-info h3 {
+        font-size: 0.9rem;
+    }
+    
+    .mentor-project {
+        font-size: 0.7rem;
+    }
+    
+    .company-logo {
+        width: 85px;
+        height: 30px;
     }
     
     .intro-point p {

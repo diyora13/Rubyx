@@ -1,13 +1,21 @@
 /* Tutors Section Styles */
 .tutors {
     background-color: #f9fafb;
-    padding: 30px 5% 80px;
+    padding: 30px 5% 50px; /* Reduced bottom padding from 80px to 50px */
+}
+
+.tutors h2 {
+    margin-bottom: 30px; /* Reduced from the default 40px */
+}
+
+.tutors h2::after {
+    margin: 10px auto 0; /* Reduced from 15px */
 }
 
 .tutor-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 350px));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 300px)); /* Reduced from 320px,350px to 280px,300px */
+    gap: 25px; /* Reduced gap from 40px to 25px */
     max-width: 1200px;
     margin: 0 auto;
     justify-content: center;
@@ -15,17 +23,17 @@
 
 .tutor {
     background: white;
-    border-radius: 10px;
+    border-radius: 8px; /* Slightly reduced from 10px */
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05); /* Reduced shadow */
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #eaeaea;
 }
 
 .tutor:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-7px); /* Reduced from -10px */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1); /* Reduced shadow */
 }
 
 .tutor-image {
@@ -34,7 +42,7 @@
 
 .tutor img {
     width: 100%;
-    height: 250px;
+    height: 200px; /* Reduced from 250px to 200px */
     object-fit: cover;
     transition: transform 0.3s ease;
 }
@@ -44,15 +52,15 @@
 }
 
 .tutor-details {
-    padding: 20px;
+    padding: 15px; /* Reduced from 20px */
 }
 
 .tutor h3 {
-    margin: 0 0 15px;
-    font-size: 1.4rem;
+    margin: 0 0 12px; /* Reduced from 15px */
+    font-size: 1.2rem; /* Reduced from 1.4rem */
     color: #333;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 8px; /* Reduced from 10px */
 }
 
 .tutor h3::after {
@@ -60,22 +68,22 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 50px;
-    height: 3px;
+    width: 40px; /* Reduced from 50px */
+    height: 2px; /* Reduced from 3px */
     background: #ff6b6b;
 }
 
 .tutor p {
     color: #555;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    margin-bottom: 8px; /* Reduced from 10px */
+    font-size: 0.9rem; /* Reduced from 0.95rem */
+    line-height: 1.3; /* Reduced from 1.4 */
 }
 
 .tutor-company, .tutor-ctc, .tutor-college {
     position: relative;
-    padding-left: 22px;
-    margin-bottom: 8px;
+    padding-left: 20px; /* Reduced from 22px */
+    margin-bottom: 6px; /* Reduced from 8px */
 }
 
 .tutor-company:before {
@@ -118,13 +126,14 @@
 
 .linkedin-btn {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 10px; /* Reduced from 15px */
     background: #0077b5;
     color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 6px 12px; /* Reduced from 8px 15px */
+    border-radius: 4px; /* Reduced from 5px */
     text-decoration: none;
     transition: background 0.3s ease;
+    font-size: 0.9rem; /* Added smaller font size */
 }
 
 .linkedin-btn:hover {
@@ -138,35 +147,35 @@
 /* Responsive Tutors Section */
 @media (max-width: 1200px) {
     .tutor-container {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 }
 
 @media (max-width: 991px) {
     .tutor-container {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
     
     .tutor img {
-        height: 220px;
+        height: 180px; /* Reduced from 220px */
     }
 }
 
 @media (max-width: 768px) {
     .tutors {
-        padding: 60px 5%;
+        padding: 40px 5%; /* Reduced from 60px */
     }
     
     .tutor-container {
-        gap: 30px;
+        gap: 20px; /* Reduced from 30px */
     }
     
     .tutor h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem; /* Reduced from 1.3rem */
     }
     
     .tutor-details {
-        padding: 15px;
+        padding: 12px; /* Reduced from 15px */
     }
 }
 
@@ -183,5 +192,16 @@
     
     .tutor img {
         height: 200px;
+    }
+}
+
+/* Ensure proper fit on larger desktop screens */
+@media (min-width: 1201px) {
+    .tutors {
+        padding: 40px 5% 50px; /* Better padding for larger screens */
+    }
+    
+    .tutor-container {
+        max-width: 1100px; /* Slightly reduced max width */
     }
 }

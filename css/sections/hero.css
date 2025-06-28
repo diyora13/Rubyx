@@ -1,23 +1,23 @@
 /* Hero Section */
 .hero {
     padding: 0;
-    height: calc(100vh - 100px); /* Adjusted for navbar + margin */
+    flex: 1; /* Take up remaining space in the header */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    margin-top: 10px; /* Extra spacing from navbar */
+    margin-top: 0; /* Remove extra spacing since it's already accounted for */
 }
 
 .hero-container {
     display: flex;
     width: 95%;
-    height: 95%;
+    height: 90%; /* Reduced from 100% to add vertical space */
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    margin: 0 auto;
+    margin: 2.5% auto; /* Added vertical margin (top/bottom 2.5%) to match horizontal spacing */
     background-color: #ffffff;
     border: 1px solid #eaeaea;
 }
@@ -51,8 +51,8 @@
 
 .hero-content {
     flex: 0 0 59%; /* Reduced slightly to account for the middle space */
-    padding: 50px 60px;
-    display: flex;
+    padding: 50px 60px 0px; 
+    flex: center;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -162,13 +162,15 @@
 @media (max-width: 991px) {
     .hero {
         height: auto;
-        padding: 60px 0;
+        padding: 30px 0; /* Reduced padding for better space usage */
+        min-height: auto; /* Remove minimum height constraint */
     }
     
     .hero-container {
         flex-direction: column;
         height: auto;
         width: 90%;
+        margin: 20px auto; /* Fixed vertical margins for mobile */
     }
     
     .hero-image-slider, .hero-content {
@@ -195,11 +197,12 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 40px 0;
+        padding: 30px 0;
     }
     
     .hero-container {
         width: 95%;
+        margin: 15px auto; /* Smaller vertical margins for mobile */
     }
     
     .hero-image-slider {
