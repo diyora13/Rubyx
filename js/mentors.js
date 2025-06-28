@@ -33,6 +33,14 @@ const mentors = [
         linkedin: 'https://www.linkedin.com/'
     },
     {
+        name: 'Dishant Goti',
+        photo: 'images/mentors/goti-edited.jpeg',
+        role: 'Software Developer',
+        company: 'amazon.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
         name: 'Kaushal Nagani',
         photo: 'images/mentors/kaushal-edited.jpeg',
         role: 'Software Developer',
@@ -55,17 +63,16 @@ const mentors = [
         company: 'google.jpg',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
-    }
-    // Commented mentors can be added back as needed
-    /*
-    {
-        name: 'Dhruvil Bhikadiya',
-        photo: 'images/mentors/bhikadiya-edited.jpeg',
-        role: 'Software Developer',
-        company: 'zepto.png',
-        alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
     },
+    // Commented mentors can be added back as needed
+    // {
+    //     name: 'Dhruvil Bhikadiya',
+    //     photo: 'images/mentors/bhikadiya-edited.jpeg',
+    //     role: 'Software Developer',
+    //     company: 'zepto.png',
+    //     alumni: 'Alumni, DAIICT',
+    //     linkedin: 'https://www.linkedin.com/'
+    // },
     {
         name: 'Akshat Bhayani',
         photo: 'images/mentors/bhayani-edited.jpeg',
@@ -74,7 +81,6 @@ const mentors = [
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     }
-    */
 ];
 
 // Function to generate mentor cards and insert them into the mentor-grid
