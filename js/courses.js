@@ -213,7 +213,7 @@ function toggleCourseView() {
         </div>
         <div class="view-more-container">
             <button id="view-more-btn" class="view-more-btn">
-                <i class="fas fa-chevron-up"></i> Show Less
+                 Show Less
             </button>
         </div>`;
         
@@ -241,7 +241,7 @@ function generateCollapsedView() {
             </div>
             <div class="view-more-container">
                 <button id="view-more-btn" class="view-more-btn">
-                    <i class="fas fa-chevron-down"></i> View More Details
+                    View More Details
                 </button>
             </div>
         </div>

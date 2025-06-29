@@ -518,7 +518,7 @@
 }
 
 .view-more-btn {
-    padding: 10px 20px; /* Reduced padding for better mobile appearance */
+    padding: 10px 5px; /* Reduced padding for better mobile appearance */
     background: linear-gradient(to right, #2575fc, #4481eb);
     color: white;
     border: none;
@@ -532,7 +532,7 @@
     gap: 8px; /* Reduced gap between icon and text */
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(37, 117, 252, 0.2);
-    min-width: 180px; /* Added min-width to maintain consistent size */
+    min-width: 150px; /* Added min-width to maintain consistent size */
     margin: 0 auto; /* Center the button */
 }
 
