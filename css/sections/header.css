@@ -15,13 +15,22 @@ header {
         height: auto; /* Auto height on mobile instead of 100vh */
         margin-bottom: 0; /* No margin at bottom to match desktop */
     }
+    
+    nav {
+        justify-content: space-between;
+        gap: 10px; /* Add gap between flex items */
+    }
+    
+    nav .logo {
+        flex: 1; /* Allow logo to take available space */
+    }
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 12px 5%; /* Reduced from 20px to 10px */
     flex-wrap: wrap;
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 0; /* Remove margin for tighter integration with hero */
@@ -35,7 +44,7 @@ nav .logo {
 }
 
 nav .logo img {
-    height: 40px; /* Adjust this value to match the size of the original text */
+    height: 40px; /* Reduced from 40px to 32px to match smaller navbar */
     width: auto;
 }
 
@@ -60,14 +69,15 @@ nav ul li a:hover {
 /* Default menu icon state - hidden on all screens */
 .menu-icon {
     display: none; /* Hide by default */
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    background-color: transparent; /* Ensure transparent background */
 }
 
 /* Hover state styling */
@@ -79,67 +89,127 @@ nav ul li a:hover {
 /* Responsive Navigation */
 @media (max-width: 991px) {
     .menu-icon {
-        display: flex; /* Show and use flex layout on mobile only */
+        display: flex;
+        align-items: center;
+        justify-content: center;
         order: 3;
-        z-index: 100;
+        z-index: 1000; /* Higher z-index to stay on top */
         position: relative;
+        margin-left: 10px;
+        padding: 0;
+        width: 44px; /* Larger touchable area */
+        height: 44px; /* Larger touchable area */
+        cursor: pointer;
+        touch-action: manipulation; /* Improved touch handling */
     }
     
     nav {
         position: relative;
+        z-index: 10; /* Ensure nav has proper z-index */
     }
     
     nav ul {
-        width: 100%;
+        width: 70%; /* Width for mobile screens */
+        max-width: 300px; /* Maximum width */
         flex-direction: column;
-        text-align: center;
-        position: absolute;
-        top: 100%;
-        left: 0;
+        text-align: left;
+        position: fixed;
+        top: 0;
+        right: -300px; /* Start off-screen */
+        height: auto; /* Auto height based on content */
+        min-height: fit-content; /* Fit content height */
+        max-height: 100vh; /* Maximum height is viewport height */
         background-color: white;
-        border-radius: 0 0 10px 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         transition: all 0.3s ease;
-        max-height: 0;
-        overflow: hidden;
+        overflow: auto; /* Allow scrolling if needed */
         opacity: 0;
         visibility: hidden;
-        z-index: 99;
+        z-index: 999;
         display: flex;
-        padding: 0;
+        padding: 60px 0 20px; /* Top and bottom padding */
         margin: 0;
     }
     
     nav ul.show {
-        max-height: 500px;
+        right: 0; /* Slide in from right */
         opacity: 1;
         visibility: visible;
-        padding: 10px 0;
-        border-top: 1px solid #e5e5e5;
+        border-left: 1px solid #e5e5e5;
+        display: flex; /* Ensure flex display */
     }
     
     nav ul li {
-        margin: 5px 0;
+        margin: 0;
         width: 100%;
-        padding: 0 20px;
+        padding: 0;
+        height: auto; /* Auto height */
     }
     
     nav ul li a {
-        display: block;
-        padding: 12px 0;
+        display: flex;
+        align-items: center; /* Center vertically */
+        height: 45px; /* Fixed height for all menu items */
+        padding: 0 20px; /* Left and right padding */
         color: #333;
         font-weight: 600;
         border-bottom: 1px solid #f0f0f0;
         transition: all 0.3s ease;
+        text-decoration: none;
     }
     
     nav ul li:last-child a {
         border-bottom: none;
     }
     
-    nav ul li a:hover {
+    nav ul li a:hover, nav ul li a:active, nav ul li a:focus {
         color: #2575fc;
-        padding-left: 10px;
+        background-color: rgba(37, 117, 252, 0.1);
+        outline: none; /* Remove outline on focus */
+    }
+    
+    /* Add active state for current menu item */
+    nav ul li a.active {
+        color: #2575fc;
+        font-weight: 700;
+        background-color: rgba(37, 117, 252, 0.05);
+    }
+}
+
+/* Specific styles for mobile navigation items */
+@media (max-width: 991px) {
+    .mobile-nav-item {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Add arrow indicator to menu items */
+    .mobile-nav-item::after {
+        content: '›';
+        position: absolute;
+        right: 20px;
+        font-size: 20px;
+        opacity: 0.7;
+    }
+    
+    .mobile-nav-item:hover::after {
+        opacity: 1;
+        transform: translateX(3px);
+        transition: transform 0.2s ease;
+    }
+}
+
+/* Additional adjustments for smaller screens */
+@media (max-width: 576px) {
+    nav ul {
+        width: 70%; /* Wider menu on very small screens */
+        right: -80%; /* Start off-screen */
+    }
+    
+    .menu-icon {
+        margin-left: 5px; /* Less margin on smaller screens */
     }
 }
 
@@ -161,6 +231,27 @@ nav ul li a:hover {
     transition: transform 0.3s ease;
 }
 
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    -webkit-tap-highlight-color: transparent; /* Prevent highlight on tap */
+}
+
+.mobile-menu-overlay.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto; /* Ensure it's clickable */
+}
+
 .sticky-nav:not(.nav-hidden) {
     transform: translateY(0);
     transition: transform 0.3s ease;
@@ -180,4 +271,14 @@ nav ul li a:hover {
     color: #2575fc;
     background-color: rgba(37, 117, 252, 0.1);
     transform: rotate(90deg);
+}
+
+/* Enhanced icon visibility */
+.menu-icon i {
+    font-size: 22px; /* Larger icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }

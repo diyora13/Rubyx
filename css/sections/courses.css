@@ -1,11 +1,11 @@
 /* Courses Section Styles - White Theme */
 .courses {
     background-color: #fff;
-    padding: 30px 5% 80px; /* Reduced top padding from 80px to 30px */
+    padding: 15px 5% 40px; /* Reduced padding from 30px 5% 80px */
 }
 
 .courses h2 {
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced from 30px */
     color: #2575fc;
     text-align: center;
 }
@@ -56,29 +56,29 @@
 }
 
 .course-boundary {
-    max-width: 1200px;
+    max-width: 700px; /* Reduced from 1200px */
     margin: 0 auto;
     background: #ffffff;
-    border-radius: 15px;
+    border-radius: 10px; /* Reduced from 15px */
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Reduced shadow */
     border: 1px solid #f0f2f5;
 }
 
 .course-container {
     display: flex;
-    min-height: 400px; /* Reduced height */
+    min-height: 350px; /* Base height */
 }
 
 /* Major Topics Sidebar */
 .major-topics {
-    width: 280px;
+    width: 255px; /* Reduced from 240px */
     background-color: #f9fafc;
     border-right: 1px solid #f0f2f5;
 }
 
 .major-topic {
-    padding: 20px 25px;
+    padding: 15px 20px; /* Reduced from 20px 25px */
     border-bottom: 1px solid #f0f2f5;
     cursor: pointer;
     position: relative;
@@ -90,7 +90,7 @@
 .major-topic span {
     font-weight: 500;
     color: #555;
-    font-size: 1rem;
+    font-size: 0.95rem; /* Reduced from 1rem */
     transition: all 0.3s ease;
 }
 
@@ -124,76 +124,83 @@
 /* Subtopics Content Area */
 .subtopics-content {
     flex: 1;
-    padding: 20px;
+    padding: 15px; /* Reduced from 20px */
     background-color: #ffffff;
     overflow-y: auto;
 }
 
 .subtopic-area {
     display: none;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.4s ease;
 }
 
 .subtopic-area h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* Reduced from 1.6rem */
     color: #2575fc;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced from 20px */
     position: relative;
     font-weight: 600;
-    padding-bottom: 10px;
+    padding-bottom: 8px; /* Reduced from 10px */
     border-bottom: 2px solid #f0f2f5;
 }
 
 /* Course Main Heading - Center Aligned */
 .course-main-heading {
     text-align: center !important;
-    font-size: 1.8rem !important;
-    margin-bottom: 25px !important;
+    font-size: 1.6rem !important; /* Reduced from 1.8rem */
+    margin-bottom: 20px !important; /* Reduced from 25px */
 }
 
 /* Subtopic List Styles - Two Column Layout */
 .subtopic-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 15px;
+    gap: 10px;
+    margin-top: 12px;
+    max-width: 660px; /* Added max-width to prevent items from stretching too far */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .subtopic-item {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
+    padding: 10px 12px; /* Reduced from 12px 15px */
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    border-radius: 8px; /* Reduced from 10px */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Reduced shadow */
     transition: all 0.3s ease;
     border: 1px solid #f0f2f5;
 }
 
 .subtopic-item:hover {
-    transform: translateX(5px);
+    transform: translateX(3px); /* Reduced from 5px */
     background-color: #f0f7ff;
     border-color: #e6f0ff;
-    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.1);
+    box-shadow: 0 3px 10px rgba(37, 117, 252, 0.1); /* Reduced shadow */
 }
 
 .subtopic-name {
-    font-size: 1.1rem;
+    font-size: 0.95rem; /* Reduced from 1.1rem */
     color: #333;
     font-weight: 500;
+    word-break: break-word; /* Allow words to break to prevent overflow */
+    text-align: center; /* Center text for better appearance */
 }
 
 /* Course Content Styles */
 .course-content {
     display: none;
-    padding: 25px;
-    animation: fadeIn 0.5s ease;
+    padding: 10px 10px 0px 20px;
+    animation: fadeIn 0.4s ease;
+    max-width: 900px; /* Added max-width to match course-boundary */
+    margin: 0 auto; /* Center the content */
 }
 
 .course-content h3 {
     color: #2575fc;
-    margin-bottom: 20px;
-    font-size: 1.6rem;
+    margin-bottom: 15px; /* Reduced from 20px */
+    font-size: 1.4rem; /* Reduced from 1.6rem */
 }
 
 .course-content ul {
@@ -221,30 +228,143 @@
     to { opacity: 1; }
 }
 
+/* Collapsed Course View Styles */
+.collapsed-course-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    background: #ffffff;
+    max-width: 780px; /* Added fixed max-width */
+    margin: 0 auto; /* Center the container */
+    align-items: center; /* Center content horizontally */
+}
+
+.collapsed-topics-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Changed from 3 columns to 2 */
+    gap: 12px;
+    margin-bottom: 20px;
+    width: 100%; /* Ensure full width */
+    max-width: 600px; /* Limit max width for better appearance */
+}
+
+.collapsed-topic-item {
+    padding: 10px 12px; /* Slightly reduced padding */
+    border-radius: 8px;
+    background-color: #f9fafc;
+    border: 1px solid #f0f2f5;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+}
+
+/* Making collapsed view more responsive on mobile */
+@media (max-width: 480px) {
+    .collapsed-topics-list {
+        grid-template-columns: repeat(1, 1fr); /* Changed to 1 column for mobile */
+        gap: 8px;
+    }
+    
+    .collapsed-topic-item {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+    
+    .course-main-heading {
+        font-size: 1.4rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .view-more-container {
+        margin: 10px 0;
+    }
+    
+    .view-more-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        min-width: 150px;
+    }
+}
+
 /* Responsive Courses Section */
 @media (max-width: 992px) {
     .course-container {
         flex-direction: column;
+        min-height: 300px; /* Reduced height for tablets */
     }
     
     .major-topics {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid #f0f2f5;
-        display: flex;
-        overflow-x: auto;
-        white-space: nowrap;
-        scrollbar-width: none; /* Firefox */
-    }
-    
-    .major-topics::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: grid; /* Changed from flex to grid */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+        overflow-x: visible; /* Remove scroll */
+        white-space: normal;
     }
     
     .major-topic {
-        padding: 15px 20px;
+        padding: 12px 10px;
         border-bottom: none;
         border-right: 1px solid #f0f2f5;
+        border-bottom: 1px solid #f0f2f5;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .major-topic:nth-child(3n) {
+        border-right: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .courses {
+        padding: 40px 4%; /* Reduced padding */
+    }
+    
+    .course-content {
+        padding: 15px; /* Reduced padding */
+    }
+    
+    .course-container {
+        min-height: 280px; /* Further reduced height for smaller tablets */
+    }
+    
+    .subtopic-list {
+        gap: 8px; /* Reduced gap */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .subtopic-area h3 {
+        font-size: 1.3rem; /* Reduced font size */
+        margin-bottom: 15px; /* Reduced margin */
+    }
+    
+    /* Adjusted major topics for better mobile display */
+    .major-topics {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller tablets */
+    }
+    
+    .major-topic {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+        border-right: 1px solid #f0f2f5;
+        border-bottom: 1px solid #f0f2f5;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .major-topic:nth-child(even) {
+        border-right: none;
     }
     
     .major-topic.active::before {
@@ -255,71 +375,178 @@
         width: 100%;
     }
     
-    .subtopics-content {
-        padding: 25px 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .courses {
-        padding: 60px 5%;
-    }
-    
-    .course-content {
-        padding: 20px;
-    }
-    
-    .subtopic-list {
-        gap: 10px;
-        grid-template-columns: repeat(2, 1fr); /* Maintain two columns */
-    }
-    
-    .subtopic-area h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-    
-    .major-topic {
+    /* Collapsed view adjustments */
+    .collapsed-course-container {
         padding: 12px 15px;
+    }
+    
+    .collapsed-topic-item {
+        padding: 10px;
         font-size: 0.9rem;
-    }
-    
-    .course-tab {
-        padding: 10px 15px;
-        font-size: 0.85rem;
-    }
-    
-    .subtopic-item {
-        padding: 12px 15px;
-    }
-    
-    .subtopic-name {
-        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .courses {
-        padding: 40px 5%;
+        padding: 30px 4%;
     }
     
     .course-boundary {
-        border-radius: 10px;
+        border-radius: 8px;
+        max-width: 100%; /* Ensure full width on mobile */
     }
     
+    .course-container {
+        min-height: auto; /* Remove fixed height on mobile */
+        max-height: none; /* Allow content to determine height */
+    }
+    
+    /* Make major topics even more compact */
+    .major-topics {
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 columns for smallest screens */
+        gap: 0;
+    }
+    
+    .major-topic {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+    
+    /* Improve subtopics display */
     .subtopic-area h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        text-align: center; /* Center headings on mobile */
     }
     
+    /* Modified: Display subtopics side by side with dynamic layout */
     .subtopic-list {
-        grid-template-columns: 1fr; /* Switch to single column on very small screens */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        max-width: 100%;
     }
     
     .subtopic-item {
-        padding: 10px 12px;
+        flex: 0 0 calc(50% - 8px); /* Approximately 2 per row with gap considered */
+        padding: 8px 10px;
+        max-width: calc(50% - 8px);
+        box-sizing: border-box;
+        justify-content: center;
     }
     
     .subtopic-name {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        text-align: center;
+        word-break: break-word;
     }
+    
+    .subtopics-content {
+        padding: 12px 8px;
+        max-height: none; /* Allow natural height */
+        overflow-y: visible; /* Don't force scrolling */
+    }
+    
+    /* More compact collapsed view */
+    .collapsed-topics-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .collapsed-topic-item {
+        flex: 0 0 calc(50% - 8px); /* Approximately 2 per row with gap considered */
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        box-sizing: border-box;
+        word-break: break-word;
+    }
+    
+    .course-main-heading {
+        font-size: 1.3rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    /* Make the view more button appropriate size for mobile */
+    .view-more-container {
+        margin: 12px 0 5px;
+    }
+    
+    .view-more-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 380px) {
+    /* Even smaller screens */
+    .subtopic-item {
+        flex: 0 0 calc(50% - 6px); /* Slightly smaller gap */
+        max-width: calc(50% - 6px);
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .subtopic-name {
+        font-size: 0.8rem;
+    }
+    
+    .subtopic-list {
+        gap: 6px;
+    }
+    
+    .collapsed-topic-item {
+        flex: 0 0 calc(50% - 6px);
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .collapsed-topics-list {
+        gap: 6px;
+    }
+}
+
+/* View More Details Button Styles */
+.view-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 10px;
+    width: 100%;
+    text-align: center; /* Add text-align center for better alignment */
+}
+
+.view-more-btn {
+    padding: 10px 20px; /* Reduced padding for better mobile appearance */
+    background: linear-gradient(to right, #2575fc, #4481eb);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem; /* Slightly reduced font size */
+    cursor: pointer;
+    display: inline-flex; /* Changed to inline-flex for better mobile alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Reduced gap between icon and text */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 117, 252, 0.2);
+    min-width: 180px; /* Added min-width to maintain consistent size */
+    margin: 0 auto; /* Center the button */
+}
+
+.view-more-btn:hover {
+    background: linear-gradient(to right, #1d68e0, #3674d8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 117, 252, 0.3);
+}
+
+.view-more-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 117, 252, 0.2);
+}
+
+.view-more-btn i {
+    font-size: 0.85rem;
 }

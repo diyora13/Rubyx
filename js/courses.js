@@ -118,7 +118,10 @@ const courseTopics = [
     }
 ];
 
-// Function to render major topics
+// Variable to track if the full course details are shown or not
+let isFullCourseVisible = false;
+
+// Function to render major topics (simplified for collapsed view)
 function renderMajorTopics() {
     const majorTopicsContainer = document.querySelector('.major-topics');
     if (!majorTopicsContainer) return;
@@ -133,23 +136,26 @@ function renderMajorTopics() {
         topicElement.innerHTML = `<span>${topic.name}</span>`;
         
         topicElement.addEventListener('click', function() {
-            // Remove active class from all topics
-            document.querySelectorAll('.major-topic').forEach(t => {
-                t.classList.remove('active');
-            });
-            
-            // Add active class to clicked topic
-            this.classList.add('active');
-            
-            // Hide all subtopic areas
-            document.querySelectorAll('.subtopic-area').forEach(area => {
-                area.style.display = 'none';
-            });
-            
-            // Show the corresponding subtopic area
-            const subtopicArea = document.getElementById(topic.id);
-            if (subtopicArea) {
-                subtopicArea.style.display = 'block';
+            // Only handle clicks if full view is visible
+            if (isFullCourseVisible) {
+                // Remove active class from all topics
+                document.querySelectorAll('.major-topic').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked topic
+                this.classList.add('active');
+                
+                // Hide all subtopic areas
+                document.querySelectorAll('.subtopic-area').forEach(area => {
+                    area.style.display = 'none';
+                });
+                
+                // Show the corresponding subtopic area
+                const subtopicArea = document.getElementById(topic.id);
+                if (subtopicArea) {
+                    subtopicArea.style.display = 'block';
+                }
             }
         });
         
@@ -188,6 +194,60 @@ function renderSubtopicsContent() {
     });
 }
 
+// Function to toggle between collapsed and full view
+function toggleCourseView() {
+    const courseContainer = document.querySelector('.course-container');
+    const courseContent = document.getElementById('fullstack-ai');
+    const viewMoreBtn = document.getElementById('view-more-btn');
+    
+    if (isFullCourseVisible) {
+        // Switch to collapsed view
+        courseContent.innerHTML = generateCollapsedView();
+        document.getElementById('view-more-btn').addEventListener('click', toggleCourseView);
+    } else {
+        // Switch to full view
+        courseContent.innerHTML = `<h3 class="course-main-heading">Full Stack Development with AI</h3>
+        <div class="course-container">
+            <div class="major-topics"></div>
+            <div class="subtopics-content"></div>
+        </div>
+        <div class="view-more-container">
+            <button id="view-more-btn" class="view-more-btn">
+                <i class="fas fa-chevron-up"></i> Show Less
+            </button>
+        </div>`;
+        
+        // Re-render the full view components
+        renderMajorTopics();
+        renderSubtopicsContent();
+        document.getElementById('view-more-btn').addEventListener('click', toggleCourseView);
+    }
+    
+    isFullCourseVisible = !isFullCourseVisible;
+}
+
+// Function to generate the collapsed view with major topics
+function generateCollapsedView() {
+    let topicsList = '';
+    courseTopics.forEach(topic => {
+        topicsList += `<div class="collapsed-topic-item">${topic.name}</div>`;
+    });
+    
+    return `
+        <h3 class="course-main-heading">Full Stack Development with AI</h3>
+        <div class="collapsed-course-container">
+            <div class="collapsed-topics-list">
+                ${topicsList}
+            </div>
+            <div class="view-more-container">
+                <button id="view-more-btn" class="view-more-btn">
+                    <i class="fas fa-chevron-down"></i> View More Details
+                </button>
+            </div>
+        </div>
+    `;
+}
+
 // Initialize course section
 document.addEventListener('DOMContentLoaded', function() {
     // Check if we're already in the DOM loaded event from another script
@@ -199,6 +259,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeCourseSection() {
-    renderMajorTopics();
-    renderSubtopicsContent();
+    const courseContent = document.getElementById('fullstack-ai');
+    if (courseContent) {
+        courseContent.innerHTML = generateCollapsedView();
+        document.getElementById('view-more-btn').addEventListener('click', toggleCourseView);
+    }
 }

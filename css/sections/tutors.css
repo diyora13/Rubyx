@@ -53,6 +53,8 @@
 
 .tutor-details {
     padding: 15px; /* Reduced from 20px */
+    display: flex;
+    flex-direction: column;
 }
 
 .tutor h3 {
@@ -126,7 +128,7 @@
 
 .linkedin-btn {
     display: inline-block;
-    margin-top: 10px; /* Reduced from 15px */
+    margin: 10px auto 0; /* Changed from margin-top to margin with auto left/right */
     background: #0077b5;
     color: white;
     padding: 6px 12px; /* Reduced from 8px 15px */
@@ -134,6 +136,8 @@
     text-decoration: none;
     transition: background 0.3s ease;
     font-size: 0.9rem; /* Added smaller font size */
+    text-align: center; /* Ensure text is centered within the button */
+    align-self: center; /* Center the button in the flex container */
 }
 
 .linkedin-btn:hover {
@@ -175,7 +179,13 @@
     }
     
     .tutor-details {
-        padding: 12px; /* Reduced from 15px */
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .linkedin-btn {
+        margin: 8px auto 0; /* Slightly reduced top margin on smaller screens */
     }
 }
 

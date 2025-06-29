@@ -4,8 +4,8 @@ const tutors = [
         image: 'images/tutors/pexels-stefanstefancik-91227.jpg',
         name: 'Manan Diyora',
         company: 'Microsoft',
-        // ctc: '₹52L',
-        education: 'B. Tech. From Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT)',
+        ctc: '₹52L',
+        education: 'B. Tech. From Dhirubhai Ambani Institute of Information and Communication Technology(DAIICT)',
         expertise: ['C/C++', 'DSA', 'OOPs', 'AI', 'Database', 'Backend'],
         linkedin: 'https://www.linkedin.com/'
     },
@@ -13,8 +13,8 @@ const tutors = [
         image: 'images/tutors/pexels-stefanstefancik-91227.jpg',
         name: 'Keval Ghelani',
         company: 'M & M Software',
-        // ctc: '₹12L',
-        education: 'B. Tech. From Charotar University of Science and Technology (CHARUSAT)',
+        ctc: '₹12L',
+        education: 'B. Tech. From Charotar University of Science and Technology(CHARUSAT)',
         expertise: ['C/C++', 'DSA', 'OOPs', 'AI', 'Frontend', 'Backend'],
         linkedin: 'https://www.linkedin.com/'
     }

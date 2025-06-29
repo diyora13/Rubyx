@@ -21,8 +21,10 @@
 
 .footer-logo {
     max-height: 200px;
-    width: 200px;
+    width: auto; /* Changed from fixed width to auto */
+    max-width: 200px; /* Added max-width constraint */
     margin-bottom: 10px;
+    object-fit: contain; /* Ensure logo maintains its aspect ratio */
 }
 
 .footer-tagline {
@@ -51,11 +53,23 @@
     color: #2575fc;
 }
 
+/* Remove underlines from contact links */
+.contact-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #2575fc; /* Blue color on hover */
+}
+
 .footer-contact p {
     display: flex;
     align-items: center;
     gap: 10px;
     color: #ddd;
+    margin: 0; /* Remove default margin */
 }
 
 .footer-contact p i {
@@ -126,7 +140,8 @@
     }
     
     .footer-logo {
-        max-height: 50px;
+        max-width: 180px; /* Adjusted from max-height to max-width */
+        height: auto; /* Ensure height scales proportionally */
     }
     
     .social-media a {
@@ -151,5 +166,28 @@
     
     .footer-bottom {
         padding: 15px 5%;
+    }
+    
+    /* Improve contact information display */
+    .footer-contact p {
+        font-size: 0.9rem; /* Slightly smaller font */
+        line-height: 1.4; /* Better line height for readability */
+        word-break: break-word; /* Allow long email/addresses to break properly */
+    }
+    
+    .contact-link p i {
+        min-width: 18px; /* Ensure icons have consistent width */
+        text-align: center; /* Center the icons */
+    }
+    
+    .footer-logo {
+        max-width: 150px; /* Proper sizing for smallest screens */
+        height: auto;
+        margin: 0 auto 10px; /* Center the logo on mobile */
+    }
+    
+    .footer-brand {
+        align-items: center; /* Center the brand content on mobile */
+        text-align: center;
     }
 }

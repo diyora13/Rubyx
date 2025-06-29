@@ -1,7 +1,7 @@
 /* Mentors Section Styles */
 .mentors {
     background-color: #f8f9fa;
-    padding: 30px 5% 80px;
+    padding: 20px 5% 30px;
 }
 
 .mentors h2 {
@@ -297,6 +297,126 @@
     margin-right: 5px;
 }
 
+/* --- Mentor Carousel Layout --- */
+.mentor-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto 0px auto;
+    position: relative;
+    max-width: 1200px;
+}
+
+.mentor-carousel-row {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    margin-bottom: 18px;
+    min-height: 240px;
+}
+
+@keyframes scrollLeftToRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+@keyframes scrollRightToLeft {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Adding a small padding to carousel rows to prevent edge cases with blank spaces */
+.mentor-carousel-row {
+    padding: 0 10px;
+}
+
+.mentor-carousel-track {
+    display: flex;
+    will-change: transform;
+    width: max-content; /* Ensure enough space */
+    transition: transform 0.5s ease-out;
+}
+
+.mentor-carousel-row:not(.reverse) .mentor-carousel-track {
+    animation: scrollRightToLeft 30s linear infinite;
+}
+
+.mentor-carousel-row.reverse .mentor-carousel-track {
+    animation: scrollLeftToRight 30s linear infinite;
+}
+
+.mentor-carousel-row:hover .mentor-carousel-track {
+    animation-play-state: paused;
+}
+
+.mentor-carousel-row.user-interaction .mentor-carousel-track {
+    animation: none !important;
+}
+
+/* Arrow navigation controls */
+.mentor-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.mentor-carousel-arrow.left {
+    left: 5px;
+}
+
+.mentor-carousel-arrow.right {
+    right: 5px;
+}
+
+.mentor-carousel-arrow:hover {
+    background: #f8f8f8;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.mentor-carousel-arrow i {
+    color: #555;
+    font-size: 16px;
+}
+
+.mentor-carousel-row .mentor-card {
+    margin: 0 10px;
+    width: 180px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1200px) {
+    .mentor-carousel-row .mentor-card {
+        width: 160px;
+    }
+}
+@media (max-width: 768px) {
+    .mentor-carousel-row .mentor-card {
+        width: 130px;
+    }
+}
+@media (max-width: 576px) {
+    .mentor-carousel-row .mentor-card {
+        width: 110px;
+    }
+}
+
+/* Hide default grid for carousel mode */
+.mentor-grid { display: none !important; }
+
 /* Responsive Mentors Section */
 @media (max-width: 1400px) {
     .mentor-grid {
@@ -330,13 +450,14 @@
     
     .intro-content {
         flex-direction: column;
-        gap: 30px;
+        gap: 0px;
     }
     
     .intro-divider {
         flex-direction: row;
         width: 100%;
         padding: 10px 0;
+        justify-content: center; /* Center the divider horizontally */
     }
     
     .divider-line {
@@ -350,6 +471,12 @@
     
     .divider-line:last-child {
         background: linear-gradient(to left, transparent, #6a11cb);
+    }
+    
+    /* Improve point alignment on tablet */
+    .intro-left, .intro-right {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -386,27 +513,31 @@
     }
     
     .mentors-intro {
-        padding: 20px 15px;
+        padding: 10px 8px; /* Reduced padding for less height */
+        margin-bottom: 20px; /* Reduce bottom margin */
     }
     
     .mentor-boundary {
-        padding: 20px 15px;
+        padding: 15px 5px;
     }
     
     .mentors h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-bottom: 18px;
     }
     
     .mentors-intro h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        padding-bottom: 6px;
     }
     
     .intro-point {
-        gap: 10px;
+        gap: 7px;
     }
     
     .mentor-info h3 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     
     .mentor-project {
@@ -414,21 +545,55 @@
     }
     
     .company-logo {
-        width: 85px;
-        height: 30px;
+        width: 75px;
+        height: 25px;
     }
     
     .intro-point p {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+        line-height: 1.3;
     }
     
     .check-icon i, .star-icon i {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
     }
     
     .divider-icon {
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .intro-divider {
+        padding: 2px 0;
+        margin: 2px 0;
+    }
+    
+    .divider-line {
+        width: 18px; /* Even shorter lines on mobile */
+    }
+    
+    .divider-icon {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+    }
+    
+    .divider-icon i {
+        font-size: 0.7rem;
+    }
+    
+    .intro-left, .intro-right {
+        padding: 5px;
+        gap: 8px;
+    }
+    
+    .check-icon, .star-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .check-icon i, .star-icon i {
+        font-size: 0.7rem;
     }
 }
 
