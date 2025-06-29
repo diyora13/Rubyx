@@ -28,41 +28,6 @@ function rotateImages() {
 // Start the image rotation
 setInterval(rotateImages, slideDuration);
 
-// Country code dropdown functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const selectedCode = document.getElementById('selected-code');
-    const countryDropdown = document.getElementById('country-dropdown');
-    const countryOptions = document.querySelectorAll('.country-option');
-    const selectedFlag = document.getElementById('selected-flag');
-    const selectedCodeText = document.getElementById('selected-code-text');
-    
-    // Toggle dropdown when clicking on selected code
-    selectedCode.addEventListener('click', function() {
-        countryDropdown.style.display = countryDropdown.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!selectedCode.contains(event.target) && !countryDropdown.contains(event.target)) {
-            countryDropdown.style.display = 'none';
-        }
-    });
-    
-    // Handle country selection
-    countryOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const code = this.getAttribute('data-code');
-            const country = this.getAttribute('data-country');
-            
-            selectedCodeText.textContent = code;
-            selectedFlag.src = `https://flagcdn.com/w20/${country}.png`;
-            selectedFlag.alt = `${country} flag`;
-            
-            countryDropdown.style.display = 'none';
-        });
-    });
-});
-
 // Form validation functions
 function validateName(nameInput, nameError) {
     const name = nameInput.value.trim();
@@ -121,128 +86,186 @@ function validateEmail(emailInput, emailError) {
     }
 }
 
-// Set up real-time validation and form submission
+// Initialize all DOM-dependent functionality in a single DOMContentLoaded event
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('enroll-form');
-    const nameInput = document.getElementById('name');
-    const phoneInput = document.getElementById('phone');
-    const emailInput = document.getElementById('email');
+    // Country code dropdown functionality
+    // const selectedCode = document.getElementById('selected-code');
+    // const countryDropdown = document.getElementById('country-dropdown');
     
-    const nameError = document.getElementById('name-error');
-    const phoneError = document.getElementById('phone-error');
-    const emailError = document.getElementById('email-error');
-    
-    const formResponse = document.getElementById('form-response');
-    
-    // Set up real-time validation
-    // Add blur event (when field loses focus) for better UX
-    nameInput.addEventListener('input', function() {
-        validateName(nameInput, nameError);
-    });
-    nameInput.addEventListener('blur', function() {
-        validateName(nameInput, nameError);
-    });
-    
-    phoneInput.addEventListener('input', function() {
-        validatePhone(phoneInput, phoneError);
-    });
-    phoneInput.addEventListener('blur', function() {
-        validatePhone(phoneInput, phoneError);
-    });
-    
-    emailInput.addEventListener('input', function() {
-        validateEmail(emailInput, emailError);
-    });
-    emailInput.addEventListener('blur', function() {
-        validateEmail(emailInput, emailError);
-    });// Form submission
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+    // if (selectedCode && countryDropdown) {
+    //     const countryOptions = document.querySelectorAll('.country-option');
+    //     const selectedFlag = document.getElementById('selected-flag');
+    //     const selectedCodeText = document.getElementById('selected-code-text');
         
-        const countryCode = document.getElementById('selected-code-text').textContent;
+    //     // Toggle dropdown when clicking on selected code
+    //     selectedCode.addEventListener('click', function() {
+    //         countryDropdown.style.display = countryDropdown.style.display === 'block' ? 'none' : 'block';
+    //     });
         
-        // Validate all fields
-        const isNameValid = validateName(nameInput, nameError);
-        const isPhoneValid = validatePhone(phoneInput, phoneError);
-        const isEmailValid = validateEmail(emailInput, emailError);
+    //     // Close dropdown when clicking outside
+    //     document.addEventListener('click', function(event) {
+    //         if (!selectedCode.contains(event.target) && !countryDropdown.contains(event.target)) {
+    //             countryDropdown.style.display = 'none';
+    //         }
+    //     });
         
-        const isValid = isNameValid && isPhoneValid && isEmailValid;
-          // If validation passes, submit the form
-        if (isValid) {
-            // Show the submitting state with animation
-            form.style.display = 'none';
-            formResponse.style.display = 'block';
-            
-            // Add a fade-in transition
-            formResponse.style.opacity = '0';
-            formResponse.innerHTML = `
-                <div class="submitting-state">
-                    <div class="spinner"></div>
-                    <h3 class="submitting-title">Processing Your Request</h3>
-                    <p class="submitting-text">Please wait while we securely submit your information...</p>
-                </div>
-            `;
-            
-            // Trigger fade-in animation after a small delay
-            setTimeout(() => {
-                formResponse.style.opacity = '1';
-            }, 50);
-            
-            const name = nameInput.value;
-            const phone = countryCode + phoneInput.value;
-            const email = emailInput.value;
-            
-            fetch("https://script.google.com/macros/s/AKfycbzeqae9A-UyIvcCMOxXrqm6qLEofWod47gYhiSqu4xqQUuiBjmMQDVSAHCzJDgp5qza/exec", { // Replace with your actual URL
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, phone, email })
-            })
-            .then(() => {
-                // Show success state with animation
-                setTimeout(() => {
-                    formResponse.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        formResponse.innerHTML = `
-                            <div class="success-state">
-                                <div class="success-icon"></div>
-                                <h3 class="success-title">Appointment Request Received!</h3>
-                                <p class="success-text">Thank you for reaching out. Our team will contact you shortly to confirm your appointment details.</p>
-                                <button class="contact-us-btn" onclick="location.reload()">Book Another Appointment</button>
-                            </div>
-                        `;
-                        formResponse.style.opacity = '1';
-                    }, 300);
-                }, 1500);
-            })
-            .catch(error => {
-                console.error("Error:", error);
+    //     // Handle country selection
+    //     countryOptions.forEach(option => {
+    //         option.addEventListener('click', function() {
+    //             const code = this.getAttribute('data-code');
+    //             const country = this.getAttribute('data-country');
                 
-                // Show error state with animation
-                setTimeout(() => {
-                    formResponse.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        formResponse.innerHTML = `
-                            <div class="error-state">
-                                <div class="error-icon"></div>
-                                <h3 class="error-title">Submission Failed</h3>
-                                <p class="error-text">We couldn't process your request at this time. Please try again or contact us directly.</p>
-                                <a href="#enroll" class="contact-us-btn" onclick="document.getElementById('form-response').style.display='none'; document.getElementById('enroll-form').style.display='block';">Try Again</a>
-                                <a href="#contact" class="contact-us-btn">Contact Us</a>
-                            </div>
-                        `;
-                        formResponse.style.opacity = '1';
-                    }, 300);
-                }, 1500);
+    //             selectedCodeText.textContent = code;
+    //             selectedFlag.src = `https://flagcdn.com/w20/${country}.png`;
+    //             selectedFlag.alt = `${country} flag`;
+                
+    //             countryDropdown.style.display = 'none';
+    //         });
+    //     });
+    // }
+
+    // Check if bannerTextElement exists before trying to access it
+    // if (typeof bannerTextElement !== 'undefined') {
+    //     const robotIcon = bannerTextElement.querySelector('.fa-robot');
+    //     if (robotIcon) {
+    //         robotIcon.style.display = 'inline-block';
+    //         robotIcon.style.visibility = 'visible';
+    //     }
+    // }
+    
+    // Initialize the AI banner if the function exists
+    // if (typeof initAIBanner === 'function') {
+    //     initAIBanner();
+    // }
+
+    // Form validation and submission
+    const form = document.getElementById('enroll-form');
+    if (form) {
+        const nameInput = document.getElementById('name');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        
+        const nameError = document.getElementById('name-error');
+        const phoneError = document.getElementById('phone-error');
+        const emailError = document.getElementById('email-error');
+        
+        const formResponse = document.getElementById('form-response');
+        
+        // Set up real-time validation with blur events
+        if (nameInput && nameError) {
+            nameInput.addEventListener('input', function() {
+                validateName(nameInput, nameError);
+            });
+            nameInput.addEventListener('blur', function() {
+                validateName(nameInput, nameError);
             });
         }
-  });
-});
+        
+        if (phoneInput && phoneError) {
+            phoneInput.addEventListener('input', function() {
+                validatePhone(phoneInput, phoneError);
+            });
+            phoneInput.addEventListener('blur', function() {
+                validatePhone(phoneInput, phoneError);
+            });
+        }
+        
+        if (emailInput && emailError) {
+            emailInput.addEventListener('input', function() {
+                validateEmail(emailInput, emailError);
+            });
+            emailInput.addEventListener('blur', function() {
+                validateEmail(emailInput, emailError);
+            });
+        }
 
-// Course Tabs Functionality
-document.addEventListener('DOMContentLoaded', function() {
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const countryCode = document.getElementById('selected-code-text').textContent;
+            
+            // Validate all fields
+            const isNameValid = validateName(nameInput, nameError);
+            const isPhoneValid = validatePhone(phoneInput, phoneError);
+            const isEmailValid = validateEmail(emailInput, emailError);
+            
+            const isValid = isNameValid && isPhoneValid && isEmailValid;
+              
+            // If validation passes, submit the form
+            if (isValid) {
+                // Show the submitting state with animation
+                form.style.display = 'none';
+                formResponse.style.display = 'block';
+                
+                // Add a fade-in transition
+                formResponse.style.opacity = '0';
+                formResponse.innerHTML = `
+                    <div class="submitting-state">
+                        <div class="spinner"></div>
+                        <h3 class="submitting-title">Processing Your Request</h3>
+                        <p class="submitting-text">Please wait while we securely submit your information...</p>
+                    </div>
+                `;
+                
+                // Trigger fade-in animation after a small delay
+                setTimeout(() => {
+                    formResponse.style.opacity = '1';
+                }, 50);
+                
+                const name = nameInput.value;
+                const phone = countryCode + phoneInput.value;
+                const email = emailInput.value;
+                
+                fetch("https://script.google.com/macros/s/AKfycbzeqae9A-UyIvcCMOxXrqm6qLEofWod47gYhiSqu4xqQUuiBjmMQDVSAHCzJDgp5qza/exec", {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, phone, email })
+                })
+                .then(() => {
+                    // Show success state with animation
+                    setTimeout(() => {
+                        formResponse.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            formResponse.innerHTML = `
+                                <div class="success-state">
+                                    <div class="success-icon"></div>
+                                    <h3 class="success-title">Appointment Request Received!</h3>
+                                    <p class="success-text">Thank you for reaching out. Our team will contact you shortly to confirm your appointment details.</p>
+                                    <button class="contact-us-btn" onclick="location.reload()">Book Another Appointment</button>
+                                </div>
+                            `;
+                            formResponse.style.opacity = '1';
+                        }, 300);
+                    }, 1500);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    
+                    // Show error state with animation
+                    setTimeout(() => {
+                        formResponse.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            formResponse.innerHTML = `
+                                <div class="error-state">
+                                    <div class="error-icon"></div>
+                                    <h3 class="error-title">Submission Failed</h3>
+                                    <p class="error-text">We couldn't process your request at this time. Please try again or contact us directly.</p>
+                                    <a href="#enroll" class="contact-us-btn" onclick="document.getElementById('form-response').style.display='none'; document.getElementById('enroll-form').style.display='block';">Try Again</a>
+                                    <a href="#contact" class="contact-us-btn">Contact Us</a>
+                                </div>
+                            `;
+                            formResponse.style.opacity = '1';
+                        }, 300);
+                    }, 1500);
+                });
+            }
+        });
+    }
+
     // Handle course tab switching
     document.querySelectorAll('.course-tab').forEach(tab => {
         tab.addEventListener('click', function() {
@@ -282,10 +305,8 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(this.dataset.topic).style.display = 'block';
         });
     });
-});
 
-// Hamburger menu toggle for mobile
-document.addEventListener('DOMContentLoaded', function() {
+    // Hamburger menu toggle for mobile
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.getElementById('nav-links');
     
@@ -315,29 +336,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Sticky Navigation with hide on scroll down, show on scroll up
     const navbar = document.querySelector('nav');
-    const headerHeight = navbar.offsetHeight;
-    let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (navbar) {
+        const headerHeight = navbar.offsetHeight;
+        let lastScrollTop = 0;
         
-        // Add sticky class when scrolled past header
-        if (scrollTop > headerHeight) {
-            navbar.classList.add('sticky-nav');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
             
-            // Hide on scroll down, show on scroll up
-            if (scrollTop > lastScrollTop) {
-                // Scrolling down
-                navbar.classList.add('nav-hidden');
+            // Add sticky class when scrolled past header
+            if (scrollTop > headerHeight) {
+                navbar.classList.add('sticky-nav');
+                
+                // Hide on scroll down, show on scroll up
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    // Scrolling up
+                    navbar.classList.remove('nav-hidden');
+                }
             } else {
-                // Scrolling up
+                navbar.classList.remove('sticky-nav');
                 navbar.classList.remove('nav-hidden');
             }
-        } else {
-            navbar.classList.remove('sticky-nav');
-            navbar.classList.remove('nav-hidden');
-        }
-        
-        lastScrollTop = scrollTop;
-    });
+            
+            lastScrollTop = scrollTop;
+        });
+    }
 });

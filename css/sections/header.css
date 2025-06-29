@@ -3,7 +3,7 @@ header {
     background: white;
     color: #333;
     padding-bottom: 0;
-    height: 100vh; /* Full viewport height */
+    height: calc(100vh - 37px); /* Account for the AI banner height */
     position: relative;
     margin-bottom: 0; /* Remove bottom margin to ensure exact 100vh total height */
     display: flex;

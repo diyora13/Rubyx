@@ -3,6 +3,9 @@
 /* General Styles & Reset */
 @import url('sections/general.css');
 
+/* AI Banner */
+@import url('sections/banner.css');
+
 /* Header & Navigation */
 @import url('sections/header.css');
 
