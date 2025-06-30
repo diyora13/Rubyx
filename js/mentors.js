@@ -60,7 +60,7 @@ const mentors = [
         name: 'Darshan Sohaliya',
         photo: 'images/mentors/darshan-edited.jpeg',
         role: 'Software Developer',
-        company: 'Ontic.jpg',
+        company: 'ontic.jpg',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
