@@ -435,22 +435,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isDragging) {
                     isDragging = false;
                     row.classList.remove('dragging');
-                    
-                    // Resume animation after a short delay
-                    setTimeout(() => {
-                        const computedStyle = window.getComputedStyle(track);
-                        const matrix = new DOMMatrix(computedStyle.transform);
-                        lastKnownX = matrix.m41;
-                        track.style.transform = `translateX(${lastKnownX}px)`;
-                        track.offsetHeight;
-                        track.style.animation = lastAnimation;
-                        track.style.animationPlayState = 'running';
-                        row.classList.remove('carousel-paused');
-                    }, 500);
+                    // Don't resume animation automatically - wait for touch outside
                 }
             });
         });
     }, 100);
+    
+    // Global touch handler to resume carousel when touching outside mentor section
+    document.addEventListener('touchstart', (e) => {
+        const mentorCarousel = document.querySelector('.mentor-carousel-container');
+        if (!mentorCarousel) return;
+        
+        // Check if touch is outside the mentor carousel
+        const isOutsideCarousel = !mentorCarousel.contains(e.target);
+        
+        if (isOutsideCarousel) {
+            // Resume all paused carousels
+            document.querySelectorAll('.mentor-carousel-row.carousel-paused').forEach(row => {
+                const track = row.querySelector('.mentor-carousel-track');
+                
+                // Get current position
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(computedStyle.transform);
+                const currentX = matrix.m41;
+                
+                // Resume animation from current position
+                track.style.transform = `translateX(${currentX}px)`;
+                track.offsetHeight; // Force reflow
+                
+                // Restore the animation
+                const animationName = row.classList.contains('reverse') ? 'scrollLeftToRight' : 'scrollRightToLeft';
+                track.style.animation = `${animationName} 60s linear infinite`;
+                track.style.animationPlayState = 'running';
+                row.classList.remove('carousel-paused');
+            });
+        }
+    });
     
     // Add window resize handler to ensure cards remain visible after resize
     window.addEventListener('resize', function() {
