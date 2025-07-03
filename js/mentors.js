@@ -1,22 +1,6 @@
 // Mentors data
 const mentors = [
     {
-        name: 'Jaimin Moradiya',
-        photo: 'images/mentors/jaimin-edited.jpg',
-        role: 'Software Engineer',
-        company: 'microsoft.png',
-        alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
-    },
-    {
-        name: 'Sanny Dhameliya',
-        photo: 'images/mentors/sanny-edited.jpeg',
-        role: 'Technical Analyst',
-        company: 'goldman-sachs.jpeg',
-        alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
-    },
-    {
         name: 'Yash Sakaria',
         photo: 'images/mentors/yash_sakaria-edited.jpg',
         role: 'Software Engineer',
@@ -25,50 +9,26 @@ const mentors = [
         linkedin: 'https://www.linkedin.com/'
     },
     {
-        name: 'Yash Shah',
-        photo: 'images/mentors/yash_shah-edited.jpeg',
-        role: 'Software Engineer',
-        company: 'microsoft.png',
-        alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
-    },
-    {
-        name: 'Meet Gohil',
-        photo: 'images/mentors/meet-edited.jpeg',
-        role: 'Software Developer',
-        company: 'tekion.png',
-        alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
-    },
-    {
-        name: 'Nemin Shah',
-        photo: 'images/mentors/nemin-edited.jpeg',
-        role: 'Software Developer',
-        company: 'phonepe.png',
-        alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
-    },
-    {
-        name: 'Krunal Mathukiya',
-        photo: 'images/mentors/mathukiya-edited.jpeg',
+        name: 'Kiran Italiya',
+        photo: 'images/mentors/kiran-edited.jpeg',
         role: 'Software Developer',
         company: 'amazon.png',
         alumni: 'Alumni, DDU',
         linkedin: 'https://www.linkedin.com/'
     },
     {
-        name: 'Darshan Sohaliya',
-        photo: 'images/mentors/darshan-edited.jpeg',
-        role: 'Software Developer',
-        company: 'ontic.jpg',
+        name: 'Hasti Doshi',
+        photo: 'images/mentors/hasti-edited.jpeg',
+        role: 'Software Developer Engineer',
+        company: 'google.jpg',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
     {
-        name: 'Dhruvil Bhikadiya',
-        photo: 'images/mentors/bhikadiya-edited.jpeg',
-        role: 'Software Developer',
-        company: 'zepto.png',
+        name: 'Jaimin Moradiya',
+        photo: 'images/mentors/jaimin-edited.jpg',
+        role: 'Software Engineer',
+        company: 'microsoft.png',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
@@ -81,18 +41,18 @@ const mentors = [
         linkedin: 'https://www.linkedin.com/'
     },
     {
-        name: 'Kaushal Nagani',
-        photo: 'images/mentors/kaushal-edited.jpeg',
-        role: 'Software Developer',
-        company: 'sumo_logic.jpg',
+        name: 'Drashti Koladiya',
+        photo: 'images/mentors/drashti-edited.jpeg',
+        role: 'Software Developer Engineer',
+        company: 'google.jpg',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
     {
-        name: 'Akash Kothiya',
-        photo: 'images/mentors/kothiya-edited.jpeg',
-        role: 'Software Developer',
-        company: 'Rippling.jpg',
+        name: 'Yash Shah',
+        photo: 'images/mentors/yash_shah-edited.jpeg',
+        role: 'Software Engineer',
+        company: 'microsoft.png',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
     },
@@ -105,19 +65,132 @@ const mentors = [
         linkedin: 'https://www.linkedin.com/'
     },
     {
+        name: 'Krunal Mathukiya',
+        photo: 'images/mentors/mathukiya-edited.jpeg',
+        role: 'Software Developer',
+        company: 'amazon.png',
+        alumni: 'Alumni, DDU',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Sanny Dhameliya',
+        photo: 'images/mentors/sanny-edited.jpeg',
+        role: 'Technical Analyst',
+        company: 'goldman-sachs.jpeg',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Kenil Bhingradiya',
+        photo: 'images/mentors/kenil-edited.jpeg',
+        role: 'Technical Analyst',
+        company: 'morgan-stanley.jpg',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    //
+    {
+        name: 'Jaydeep Machhi',
+        photo: 'images/mentors/jaydeep-edited.jpeg',
+        role: 'Software Developer',
+        company: 'rubrik.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Dhruvil Bhikadiya',
+        photo: 'images/mentors/bhikadiya-edited.jpeg',
+        role: 'Software Developer',
+        company: 'zepto.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Meet Gohil',
+        photo: 'images/mentors/meet-edited.jpeg',
+        role: 'Software Developer',
+        company: 'tekion.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
         name: 'Akshat Bhayani',
         photo: 'images/mentors/bhayani-edited.jpeg',
         role: 'Software Developer',
         company: 'navi.png',
         alumni: 'Alumni, DAIICT',
         linkedin: 'https://www.linkedin.com/'
-    }
+    },
+    {
+        name: 'Keval Savaliya',
+        photo: 'images/mentors/keval-edited.jpeg',
+        role: 'Software Engineer',
+        company: 'tekion.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Bhadrayu Bhalodia',
+        photo: 'images/mentors/bhadrayu-edited.jpeg',
+        role: 'Software Engineer',
+        company: 'tekion.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Kaushal Nagani',
+        photo: 'images/mentors/kaushal-edited.jpeg',
+        role: 'Software Developer',
+        company: 'sumo_logic.jpg',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Purav Kansara',
+        photo: 'images/mentors/purav-edited.jpeg',
+        role: 'Software Engineer',
+        company: 'tekion.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Akash Kothiya',
+        photo: 'images/mentors/kothiya-edited.jpeg',
+        role: 'Software Developer',
+        company: 'Rippling.jpg',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Darshan Sohaliya',
+        photo: 'images/mentors/darshan-edited.jpeg',
+        role: 'Software Developer',
+        company: 'ontic.jpg',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Madhvi Padshala',
+        photo: 'images/mentors/madhvi-edited.jpeg',
+        role: 'Software Developer Engineer',
+        company: 'bny.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
+    {
+        name: 'Nemin Shah',
+        photo: 'images/mentors/nemin-edited.jpeg',
+        role: 'Software Developer',
+        company: 'phonepe.png',
+        alumni: 'Alumni, DAIICT',
+        linkedin: 'https://www.linkedin.com/'
+    },
 ];
 
 // Helper: chunk array into two nearly equal parts
 function splitMentors(mentors) {
-    const half = Math.ceil(mentors.length / 2);
-    return [mentors.slice(0, half), mentors.slice(half)];
+    const half = Math.floor(mentors.length / 2);
+    return [mentors.slice(0, half), mentors.slice(half, mentors.length)];
 }
 
 // Carousel rendering with continuous scrolling
@@ -155,14 +228,10 @@ function renderMentorCarousel() {
     container.className = 'mentor-carousel-container';
 
     rows.forEach((rowMentors, rowIdx) => {
-        // Skip empty rows
         if (rowMentors.length === 0) return;
-        
         const row = document.createElement('div');
         row.className = 'mentor-carousel-row' + (rowIdx === 1 ? ' reverse' : '');
         row.dataset.row = rowIdx;
-        
-        // Track for sliding
         const track = document.createElement('div');
         track.className = 'mentor-carousel-track';
         
@@ -208,331 +277,126 @@ function renderMentorCarousel() {
             track.style.transform = 'translateX(0)';
         }, 50);
         
-        // Add navigation arrows
-        const leftArrow = document.createElement('div');
-        leftArrow.className = 'mentor-carousel-arrow left';
-        leftArrow.innerHTML = '<i class="fas fa-chevron-left"></i>';
-        
-        const rightArrow = document.createElement('div');
-        rightArrow.className = 'mentor-carousel-arrow right';
-        rightArrow.innerHTML = '<i class="fas fa-chevron-right"></i>';
-        
-        row.appendChild(leftArrow);
-        row.appendChild(rightArrow);
         container.appendChild(row);
-        
-        // Variables to track carousel position
-        let currentPosition = 0;
-        let cardWidth = 0;
-        let isAnimationPaused = false;
-        let clickCount = 0;
-        let maxClicksBeforeReset = 5; // Reset after 5 consecutive clicks
-        
-        // Calculate card width including margins
-        function getCardWidth() {
-            const card = track.querySelector('.mentor-card');
-            if (!card) return 200;
-            if (!cardWidth) {
-                const style = window.getComputedStyle(card);
-                cardWidth = card.offsetWidth + parseInt(style.marginLeft || 0) + parseInt(style.marginRight || 0);
-            }
-            return cardWidth;
-        }
-        
-        // Get visible cards count (how many cards fit in viewport)
-        function getVisibleCardCount() {
-            const containerWidth = row.clientWidth;
-            const cardW = getCardWidth();
-            return Math.floor(containerWidth / cardW) || 5; // Default to 5 if calculation fails
-        }
-        
-        // Move carousel by specified number of cards
-        function moveCarousel(steps) {
-            // Get all cards and calculate total width
-            const cards = track.querySelectorAll('.mentor-card');
-            const totalCards = cards.length;
-            const halfCards = Math.floor(totalCards / 2); // Half due to duplication
-            const visibleCards = getVisibleCardCount();
-            const cardWidth = getCardWidth();
-            
-            // Increment click counter
-            clickCount++;
-            
-            // Pause CSS animation and switch to manual control
-            if (!isAnimationPaused) {
-                // Get current animation position
-                const computedStyle = window.getComputedStyle(track);
-                const matrix = new DOMMatrix(computedStyle.transform);
-                currentPosition = matrix.m41; // Get translateX value
-                
-                // Stop animation
-                track.style.animation = 'none';
-                track.style.transform = `translateX(${currentPosition}px)`;
-                isAnimationPaused = true;
-            }
-            
-            // Calculate the move distance (one card width)
-            const moveDistance = cardWidth * steps;
-            
-            // Apply direction based on row type (normal or reverse)
-            const direction = rowIdx === 0 ? -1 : 1;
-            
-            // Update position
-            currentPosition += moveDistance * direction;
-            
-            // Calculate the total width of one full set of cards
-            const originalSetWidth = cardWidth * halfCards;
-            
-            // Calculate if we need to wrap around (hit the threshold where we should jump to maintain the illusion of infinity)
-            const needsToWrap = Math.abs(currentPosition) >= originalSetWidth;
-            const needsReset = clickCount >= maxClicksBeforeReset;
-            
-            // Smooth transition to the next position
-            track.style.transition = 'transform 0.4s ease';
-            track.style.transform = `translateX(${currentPosition}px)`;
-            
-            // If we need to wrap around (reset position to maintain infinite loop)
-            if (needsToWrap || needsReset) {
-                setTimeout(() => {
-                    // Remove transition for instant position change
-                    track.style.transition = 'none';
-                    
-                    if (needsToWrap) {
-                        // This is the key fix to prevent blank spaces
-                        
-                        // Get number of visible cards
-                        const visibleCards = getVisibleCardCount();
-                        
-                        // Calculate exact offset for smooth wrapping
-                        let offset = Math.abs(currentPosition) % originalSetWidth;
-                        
-                        // Make sure we're using modulo correctly (JS returns negative modulo)
-                        if (offset < 0) offset += originalSetWidth;
-                        
-                        // Jump to the equivalent position in the other duplicate set
-                        if (rowIdx === 1) { // Second row (left-to-right)
-                            // For the second row that scrolls left-to-right
-                            if (currentPosition > originalSetWidth) {
-                                // If we've scrolled too far right, jump back by one set width
-                                currentPosition = offset;
-                            } else if (currentPosition < -originalSetWidth) {
-                                // If we've scrolled too far left, jump forward by one set width
-                                currentPosition = -offset;
-                            }
-                        } else { // First row (right-to-left)
-                            // For the first row that scrolls right-to-left
-                            if (currentPosition < -originalSetWidth) {
-                                // If we've scrolled too far left, jump back to equivalent position
-                                currentPosition = -offset;
-                            } else if (currentPosition > originalSetWidth) {
-                                // If we've scrolled too far right, jump forward to equivalent position
-                                currentPosition = offset;
-                            }
-                        }
-                        
-                        // Edge case: if at exact boundary (offset is 0), move slightly to prevent blank space
-                        if (offset === 0) {
-                            currentPosition = rowIdx === 0 ? -1 : 1;
-                        }
-                    } else if (needsReset) {
-                        // After many clicks, reset to a safe position
-                        currentPosition = rowIdx === 0 ? 0 : 0;
-                        
-                        // Check if this position would show cards
-                        const containerWidth = row.clientWidth;
-                        const totalVisibleWidth = containerWidth + cardWidth; // Add one extra card width for safety
-                        
-                        // Ensure we can see cards
-                        if (Math.abs(currentPosition) + totalVisibleWidth > originalSetWidth) {
-                            // Adjust if we'd be showing blank space
-                            currentPosition = rowIdx === 0 ? -cardWidth : cardWidth;
-                        }
-                    }
-                    
-                    // Apply the new position
-                    track.style.transform = `translateX(${currentPosition}px)`;
-                    
-                    // Force reflow to make the no-transition change apply
-                    track.offsetHeight;
-                    track.style.transition = 'transform 0.4s ease';
-                    clickCount = 0; // Reset click counter
-                }, 400);
-            }
-        }
-        
-        // Restart animation when interaction ends
-        function restartAnimation() {
-            // Get all cards
-            const cards = track.querySelectorAll('.mentor-card');
-            const totalCards = cards.length;
-            const halfCards = Math.floor(totalCards / 2);
-            const cardWidth = getCardWidth();
-            const originalSetWidth = cardWidth * halfCards;
-            
-            // Remove the interaction class to restart animation
-            row.classList.remove('user-interaction');
-            
-            // Reset track position to ensure smooth restart
-            track.style.animation = 'none';
-            track.style.transition = 'none';
-            
-            // Calculate proper restart position:
-            // If we're between 0 and originalSetWidth, keep position but make sure we're not at edge
-            if (currentPosition > 0) {
-                // For reverse row (left-to-right), adjust if needed
-                currentPosition = currentPosition % originalSetWidth;
-                if (currentPosition === 0) currentPosition = 1; // Avoid exact boundary
-            } else {
-                // For normal row (right-to-left), adjust if needed
-                currentPosition = currentPosition % originalSetWidth;
-                if (currentPosition === 0) currentPosition = -1; // Avoid exact boundary
-            }
-            
-            // Set position before restarting animation
-            track.style.transform = `translateX(${currentPosition}px)`;
-            
-            // Force a reflow to make sure the animation restart is clean
-            track.offsetHeight;
-            
-            // Let CSS animations take over, starting from current position
-            const animationName = rowIdx === 0 ? 'scrollRightToLeft' : 'scrollLeftToRight';
-            const animationDuration = '30s';
-            const animationTimingFunction = 'linear';
-            const animationIterationCount = 'infinite';
-            
-            // Set animation with calculated starting point
-            track.style.animation = `${animationName} ${animationDuration} ${animationTimingFunction} ${animationIterationCount}`;
-            track.style.transition = '';
-            
-            isAnimationPaused = false;
-            clickCount = 0;
-        }
-        
-        // Check for and fix any blank spaces after navigation
-        function checkAndFixVisibility() {
-            const cards = track.querySelectorAll('.mentor-card');
-            const containerWidth = row.clientWidth;
-            const cardWidth = getCardWidth();
-            const visibleCards = Math.floor(containerWidth / cardWidth);
-            
-            // Get current position
-            const computedStyle = window.getComputedStyle(track);
-            const matrix = new DOMMatrix(computedStyle.transform);
-            const currentPos = matrix.m41;
-            
-            // Calculate index of first visible card
-            const firstVisibleIndex = Math.floor(Math.abs(currentPos) / cardWidth);
-            
-            // Check if enough cards are visible
-            if (firstVisibleIndex + visibleCards > cards.length) {
-                // We need to reposition - not enough cards visible
-                track.style.transition = 'none';
-                const totalCards = cards.length;
-                const halfCards = Math.floor(totalCards / 2);
-                const originalSetWidth = cardWidth * halfCards;
-                
-                // Reposition to show cards properly
-                if (currentPos < 0) {
-                    // For normal direction, move back to start of set
-                    currentPosition = 0;
-                } else {
-                    // For reverse direction, move to proper equivalent position
-                    currentPosition = originalSetWidth % currentPos;
-                }
-                
-                track.style.transform = `translateX(${currentPosition}px)`;
-                
-                // Force reflow
-                track.offsetHeight;
-                track.style.transition = 'transform 0.4s ease';
-                
-                return true; // Fixed position
-            }
-            
-            return false; // No fix needed
-        }
-
-        // Add to moveCarousel function to call this after position changes
-        const originalMoveCarousel = moveCarousel;
-        moveCarousel = function(steps) {
-            originalMoveCarousel(steps);
-            
-            // Check for blank spaces after the animation completes
-            setTimeout(() => {
-                checkAndFixVisibility();
-            }, 450);
-        };
-        
-        // Manual navigation logic
-        leftArrow.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent any default behavior
-            e.stopPropagation(); // Stop event bubbling
-            
-            // Cancel any pending restart
-            clearTimeout(row.resetTimer);
-            
-            // Add user interaction class to pause animation
-            row.classList.add('user-interaction');
-            
-            // Move one card - direction depends on row
-            // For first row: moving left means moving cards to the right (positive value)
-            // For second row (reverse): moving left means moving cards to the left (negative value)
-            moveCarousel(rowIdx === 0 ? 1 : -1);
-            
-            // Schedule restart of animation
-            row.resetTimer = setTimeout(restartAnimation, 3000);
-        });
-        
-        rightArrow.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent any default behavior
-            e.stopPropagation(); // Stop event bubbling
-            
-            // Cancel any pending restart
-            clearTimeout(row.resetTimer);
-            
-            // Add user interaction class to pause animation
-            row.classList.add('user-interaction');
-            
-            // Move one card - direction depends on row
-            // For first row: moving right means moving cards to the left (negative value)
-            // For second row (reverse): moving right means moving cards to the right (positive value)
-            moveCarousel(rowIdx === 0 ? -1 : 1);
-            
-            // Schedule restart of animation
-            row.resetTimer = setTimeout(restartAnimation, 3000);
-        });
-        
-        // Mouse event listeners
-        row.addEventListener('mouseenter', function() {
-            clearTimeout(row.resetTimer); // Clear pending animation restart
-        });
-        
-        row.addEventListener('mouseleave', function() {
-            // Only restart if we were in user-interaction mode
-            if (row.classList.contains('user-interaction')) {
-                row.resetTimer = setTimeout(restartAnimation, 1000);
-            }
-        });
     });
-    
     mentorBoundary.appendChild(container);
 }
 
+// Intersection Observer to start carousel animation when section enters viewport
+function startMentorCarouselAnimation() {
+    document.querySelectorAll('.mentor-carousel-track').forEach((track, idx) => {
+        const row = track.closest('.mentor-carousel-row');
+        // Set animation only when entering viewport
+        const animationName = idx === 0 ? 'scrollRightToLeft' : 'scrollLeftToRight';
+        const animationDuration = '60s';
+        const animationTimingFunction = 'linear';
+        const animationIterationCount = 'infinite';
+        track.style.animation = `${animationName} ${animationDuration} ${animationTimingFunction} ${animationIterationCount}`;
+    });
+}
+
+function stopMentorCarouselAnimation() {
+    document.querySelectorAll('.mentor-carousel-track').forEach((track) => {
+        track.style.animation = 'none';
+    });
+}
+
+// Setup observer on DOMContentLoaded
+
 document.addEventListener('DOMContentLoaded', function() {
     renderMentorCarousel();
+    // Remove auto animation on load
+    // Setup Intersection Observer
+    const mentorBoundary = document.querySelector('.mentor-boundary');
+    if (mentorBoundary) {
+        const observer = new window.IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startMentorCarouselAnimation();
+                } else {
+                    stopMentorCarouselAnimation();
+                }
+            });
+        }, { threshold: 0.2 }); // Adjust threshold as needed
+        observer.observe(mentorBoundary);
+    }
     
     // After rendering, ensure proper positioning of carousel tracks
     setTimeout(() => {
-        document.querySelectorAll('.mentor-carousel-track').forEach((track, idx) => {
-            const row = track.closest('.mentor-carousel-row');
-            
-            // For first row, start showing first set of cards
-            // For second row (reversed), also start showing first set
-            // The animation direction will be controlled by CSS
+        document.querySelectorAll('.mentor-carousel-row').forEach((row, idx) => {
+            const track = row.querySelector('.mentor-carousel-track');
             track.style.transform = 'translateX(0)';
-            
-            // Force reflow to ensure positioning takes effect
             track.offsetHeight;
+
+            let isDragging = false;
+            let startX = 0;
+            let scrollLeft = 0;
+            let lastKnownX = 0;
+            let lastAnimation = '';
+
+            row.addEventListener('mouseenter', () => {
+                // Save current animation and transform
+                lastAnimation = track.style.animation;
+                // Compute current transform from animation
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(computedStyle.transform);
+                lastKnownX = matrix.m41;
+                // Remove animation and set transform inline
+                track.style.animation = 'none';
+                track.style.transform = `translateX(${lastKnownX}px)`;
+                row.classList.add('carousel-paused');
+            });
+            row.addEventListener('mouseleave', () => {
+                // Compute current transform
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(computedStyle.transform);
+                lastKnownX = matrix.m41;
+                // Restore animation, start from current position
+                track.style.transform = `translateX(${lastKnownX}px)`;
+                // Force reflow
+                track.offsetHeight;
+                track.style.animation = lastAnimation;
+                track.style.animationPlayState = 'running';
+                row.classList.remove('carousel-paused');
+            });
+
+            // Mouse wheel horizontal scroll
+            row.addEventListener('wheel', (e) => {
+                if (!row.classList.contains('carousel-paused')) return;
+                e.preventDefault();
+                const style = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(style.transform);
+                let currentX = matrix.m41;
+                let delta = e.deltaY || e.deltaX;
+                if (row.classList.contains('reverse')) delta = -delta;
+                track.style.transition = 'transform 0.2s';
+                track.style.transform = `translateX(${currentX - delta}px)`;
+                setTimeout(() => { track.style.transition = ''; }, 200);
+            }, { passive: false });
+
+            // Drag to scroll
+            row.addEventListener('mousedown', (e) => {
+                if (!row.classList.contains('carousel-paused')) return;
+                isDragging = true;
+                startX = e.pageX;
+                const style = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(style.transform);
+                scrollLeft = matrix.m41;
+                row.classList.add('dragging');
+            });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX;
+                const walk = x - startX;
+                track.style.transform = `translateX(${scrollLeft + walk}px)`;
+            });
+            window.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    row.classList.remove('dragging');
+                }
+            });
         });
     }, 100);
     
@@ -540,27 +404,17 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         document.querySelectorAll('.mentor-carousel-row').forEach(row => {
             const track = row.querySelector('.mentor-carousel-track');
-            
-            // If animation is paused/user is interacting, don't adjust
             if (row.classList.contains('user-interaction')) return;
-            
-            // Pause animation temporarily
             const wasAnimated = !track.style.animation.includes('none');
             if (wasAnimated) {
                 track.style.animation = 'none';
             }
-            
-            // Check if all cards are visible
             const cards = track.querySelectorAll('.mentor-card');
             const containerWidth = row.clientWidth;
             const cardWidth = cards[0].offsetWidth + 
                 parseInt(window.getComputedStyle(cards[0]).marginLeft) + 
                 parseInt(window.getComputedStyle(cards[0]).marginRight);
-                
-            // Ensure we're showing cards
             track.style.transform = 'translateX(0)';
-            
-            // Resume animation if it was playing
             if (wasAnimated) {
                 setTimeout(() => {
                     track.style.animation = '';

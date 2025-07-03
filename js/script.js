@@ -1,6 +1,8 @@
 // Image Slider for Hero Section
+// Image size = 1370x1190
 const heroImages = [
-    'images/logo/rubyx_noBackgro.png',
+    "images/homeposters/rubyx_noBackgro.png",
+    "images/homeposters/hiring.png"
 ];
 
 let currentImageIndex = 0;
@@ -340,12 +342,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const headerHeight = navbar.offsetHeight;
         let lastScrollTop = 0;
         
+        // Create a placeholder div to prevent layout shifts
+        const navPlaceholder = document.createElement('div');
+        navPlaceholder.className = 'nav-placeholder';
+        navPlaceholder.style.height = headerHeight + 'px';
+        navbar.parentNode.insertBefore(navPlaceholder, navbar);
+        
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             
             // Add sticky class when scrolled past header
             if (scrollTop > headerHeight) {
                 navbar.classList.add('sticky-nav');
+                navPlaceholder.style.display = 'block'; // Show placeholder to prevent layout shift
                 
                 // Hide on scroll down, show on scroll up
                 if (scrollTop > lastScrollTop) {
@@ -358,6 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 navbar.classList.remove('sticky-nav');
                 navbar.classList.remove('nav-hidden');
+                navPlaceholder.style.display = 'none'; // Hide placeholder when not needed
             }
             
             lastScrollTop = scrollTop;

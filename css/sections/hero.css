@@ -23,26 +23,28 @@
 }
 
 .hero-image-slider {
-    flex: 0 0 39%; /* Reduced slightly to create space between sections */
-    position: relative;
+    flex: 0 0 45%; /* Reduced slightly to create space between sections */
+    position: relative;  
     overflow: hidden;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f9fa;
+    background-color: transparent;
     border-right: none; /* Removed border, using margin instead */
     margin-right: 1%; /* Creates space between left and right sections */
 }
 
 .hero-image-slider img {
-    max-width: 85%;
-    max-height: 85%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    padding: 15px;
+    padding: 0;
+    left: 0;
+    top: 0;
 }
 
 .hero-image-slider img.active {
@@ -162,7 +164,7 @@
 @media (max-width: 991px) {
     .hero {
         height: auto;
-        padding: 30px 0; /* Reduced padding for better space usage */
+        padding: 20px 0; /* Reduced padding for better space usage */
         min-height: auto; /* Remove minimum height constraint */
     }
     
@@ -170,7 +172,7 @@
         flex-direction: column;
         height: auto;
         width: 90%;
-        margin: 20px auto; /* Fixed vertical margins for mobile */
+        margin: 15px auto; /* Fixed vertical margins for mobile */
     }
     
     .hero-image-slider, .hero-content {
@@ -180,8 +182,15 @@
     }
     
     .hero-image-slider {
-        height: 300px;
-        min-height: 300px;
+        height: 450px;  /* Increased height for better visibility */
+        min-height: 450px;
+        width: 100%;    /* Full width to eliminate side gaps */
+        margin: 0;      /* Remove margin */
+        border-radius: 20px 20px 0 0; /* Rounded corners only at the top */
+    }
+    
+    .hero-image-slider img {
+        border-radius: 20px 20px 0 0; /* Match the container's border radius */
     }
     
     .hero-content {
@@ -197,21 +206,23 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 30px 0;
+        padding: 0;
     }
     
     .hero-container {
         width: 95%;
-        margin: 15px auto; /* Smaller vertical margins for mobile */
+        margin: 10px auto; /* Smaller vertical margins for mobile */
     }
     
     .hero-image-slider {
-        height: 250px;
-        min-height: 250px;
+        height: 400px;  /* Increased height for better visibility */
+        min-height: 400px;
+        width: 100%;    /* Full width to eliminate side gaps */
+        margin: 0;      /* Remove margin */
     }
     
     .hero-content {
-        padding: 30px;
+        padding: 20px;
     }
     
     .hero h1 {
@@ -224,5 +235,25 @@
     
     .institute-name {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image-slider {
+        height: 350px;  /* Increased height for better coverage */
+        min-height: 350px;
+        width: 100%;    /* Full width to eliminate any side gaps */
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.1rem;
+    }
+    
+    .hero-container {
+        margin: 10px auto; /* Reduced margin for very small screens */
     }
 }
