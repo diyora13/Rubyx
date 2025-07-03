@@ -335,6 +335,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let lastAnimation = '';
 
             row.addEventListener('mouseenter', () => {
+                // Only pause on hover if not on touch device
+                if ('ontouchstart' in window) return;
+                
                 // Save current animation and transform
                 lastAnimation = track.style.animation;
                 // Compute current transform from animation
@@ -347,6 +350,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.classList.add('carousel-paused');
             });
             row.addEventListener('mouseleave', () => {
+                // Only resume on hover if not on touch device
+                if ('ontouchstart' in window) return;
+                
                 // Compute current transform
                 const computedStyle = window.getComputedStyle(track);
                 const matrix = new DOMMatrix(computedStyle.transform);
@@ -374,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => { track.style.transition = ''; }, 200);
             }, { passive: false });
 
-            // Drag to scroll
+            // Drag to scroll (Mouse events)
             row.addEventListener('mousedown', (e) => {
                 if (!row.classList.contains('carousel-paused')) return;
                 isDragging = true;
@@ -395,6 +401,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isDragging) {
                     isDragging = false;
                     row.classList.remove('dragging');
+                }
+            });
+
+            // Touch events for mobile devices
+            row.addEventListener('touchstart', (e) => {
+                // Always pause animation on touch
+                lastAnimation = track.style.animation;
+                const computedStyle = window.getComputedStyle(track);
+                const matrix = new DOMMatrix(computedStyle.transform);
+                lastKnownX = matrix.m41;
+                track.style.animation = 'none';
+                track.style.transform = `translateX(${lastKnownX}px)`;
+                row.classList.add('carousel-paused');
+                
+                isDragging = true;
+                startX = e.touches[0].pageX;
+                const style = window.getComputedStyle(track);
+                const transformMatrix = new DOMMatrix(style.transform);
+                scrollLeft = transformMatrix.m41;
+                row.classList.add('dragging');
+            });
+            
+            row.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX;
+                const walk = x - startX;
+                track.style.transform = `translateX(${scrollLeft + walk}px)`;
+            });
+            
+            row.addEventListener('touchend', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    row.classList.remove('dragging');
+                    
+                    // Resume animation after a short delay
+                    setTimeout(() => {
+                        const computedStyle = window.getComputedStyle(track);
+                        const matrix = new DOMMatrix(computedStyle.transform);
+                        lastKnownX = matrix.m41;
+                        track.style.transform = `translateX(${lastKnownX}px)`;
+                        track.offsetHeight;
+                        track.style.animation = lastAnimation;
+                        track.style.animationPlayState = 'running';
+                        row.classList.remove('carousel-paused');
+                    }, 500);
                 }
             });
         });

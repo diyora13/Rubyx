@@ -314,6 +314,16 @@
     position: relative;
     margin-bottom: 18px;
     min-height: 240px;
+    cursor: grab; /* Show grab cursor on hover */
+}
+
+.mentor-carousel-row:active {
+    cursor: grabbing; /* Show grabbing cursor when active */
+}
+
+.mentor-carousel-row.dragging {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
 }
 
 @keyframes scrollLeftToRight {
@@ -335,6 +345,18 @@
     display: flex;
     will-change: transform;
     width: max-content; /* Ensure enough space */
+    transition: transform 0.5s ease-out;
+    /* Improve touch scrolling */
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x; /* Allow horizontal panning */
+}
+
+/* Smooth transition for touch interactions */
+.mentor-carousel-row.dragging .mentor-carousel-track {
+    transition: none; /* Remove transition during drag */
+}
+
+.mentor-carousel-row:not(.dragging) .mentor-carousel-track {
     transition: transform 0.5s ease-out;
 }
 
@@ -480,17 +502,39 @@
     }
 }
 
+/* Mobile-specific carousel improvements */
 @media (max-width: 768px) {
-    .mentors {
-        padding: 60px 5%;
+    .mentor-carousel-row {
+        /* Improve touch scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
     }
     
-    .mentor-card {
-        width: 180px; /* Slightly smaller on tablets */
+    .mentor-carousel-track {
+        /* Ensure smooth touch interactions */
+        touch-action: pan-x;
+        -webkit-transform: translateZ(0); /* Hardware acceleration */
+        transform: translateZ(0);
     }
     
-    .mentor-photo {
-        height: 110px; /* Keep consistent with desktop */
+    /* Improve card spacing on mobile */
+    .mentor-carousel-row .mentor-card {
+        margin: 0 8px;
+    }
+    
+    /* Pause animation on touch/drag */
+    .mentor-carousel-row.carousel-paused .mentor-carousel-track {
+        animation-play-state: paused;
+    }
+    
+    /* Visual feedback during drag */
+    .mentor-carousel-row.dragging {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+    }
+    
+    .mentor-carousel-row.dragging .mentor-card {
+        pointer-events: none; /* Prevent card interactions during drag */
     }
 }
 

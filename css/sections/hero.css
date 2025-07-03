@@ -52,7 +52,7 @@
 }
 
 .hero-content {
-    flex: 0 0 59%; /* Reduced slightly to account for the middle space */
+    flex: 0 0 55%; /* Reduced slightly to account for the middle space */
     padding: 50px 60px 0px; 
     flex: center;
     flex-direction: column;
