@@ -1,7 +1,7 @@
 // Image Slider for Hero Section
 // Image size = 1370x1190
 const heroImages = [
-    "images/homeposters/rubyx_noBackgro.png",
+    "images/homeposters/rubyx_grey_back.png",
     "images/homeposters/hiring.png"
 ];
 
@@ -18,17 +18,108 @@ heroImages.forEach((src, index) => {
     imageContainer.appendChild(img);
 });
 
-// Image rotation function
-function rotateImages() {
-    const images = imageContainer.querySelectorAll('img');
-    images[currentImageIndex].classList.remove('active');
-    
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    images[currentImageIndex].classList.add('active');
+// --- Add navigation dots ---
+const dotsContainer = document.createElement('div');
+dotsContainer.className = 'hero-slider-dots';
+heroImages.forEach((_, idx) => {
+    const dot = document.createElement('span');
+    dot.className = 'slider-dot' + (idx === 0 ? ' active' : '');
+    dot.dataset.index = idx;
+    dotsContainer.appendChild(dot);
+});
+imageContainer.appendChild(dotsContainer);
+
+function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.slider-dot');
+    dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentImageIndex);
+    });
 }
 
+// --- Manual navigation logic ---
+let autoSlideInterval;
+let autoSlideTimeout;
+function showImage(index) {
+    const images = imageContainer.querySelectorAll('img');
+    images[currentImageIndex].classList.remove('active');
+    currentImageIndex = (index + images.length) % images.length;
+    images[currentImageIndex].classList.add('active');
+    updateDots();
+}
+function nextImage() {
+    showImage(currentImageIndex + 1);
+}
+function prevImage() {
+    showImage(currentImageIndex - 1);
+}
+function startAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+        nextImage();
+    }, slideDuration);
+}
+function pauseAutoSlideAndResume() {
+    clearInterval(autoSlideInterval);
+    clearTimeout(autoSlideTimeout);
+    autoSlideTimeout = setTimeout(() => {
+        startAutoSlide();
+    }, 6000); // Resume after 6 seconds
+}
+// Dots click event
+[...dotsContainer.children].forEach(dot => {
+    dot.addEventListener('click', function() {
+        showImage(Number(this.dataset.index));
+        pauseAutoSlideAndResume();
+    });
+});
+// Swipe/drag logic for desktop and mobile
+let startX = 0;
+let isDragging = false;
+imageContainer.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX;
+});
+imageContainer.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const diff = e.pageX - startX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            prevImage();
+        } else {
+            nextImage();
+        }
+        pauseAutoSlideAndResume();
+        isDragging = false;
+    }
+});
+window.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+// Touch events for mobile
+imageContainer.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+imageContainer.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientX - startX;
+    if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+            prevImage();
+        } else {
+            nextImage();
+        }
+        pauseAutoSlideAndResume();
+        isDragging = false;
+    }
+});
+imageContainer.addEventListener('touchend', () => {
+    isDragging = false;
+});
 // Start the image rotation
-setInterval(rotateImages, slideDuration);
+document.addEventListener('DOMContentLoaded', function() {
+    startAutoSlide();
+});
 
 // Form validation functions
 function validateName(nameInput, nameError) {
