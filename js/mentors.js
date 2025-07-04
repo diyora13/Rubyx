@@ -333,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let scrollLeft = 0;
             let lastKnownX = 0;
             let lastAnimation = '';
+            let wheelTimeout = null;
 
             row.addEventListener('mouseenter', () => {
                 // Only pause on hover if not on touch device
@@ -348,10 +349,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 track.style.animation = 'none';
                 track.style.transform = `translateX(${lastKnownX}px)`;
                 row.classList.add('carousel-paused');
+                
+                // Add cursor style for better UX
+                row.style.cursor = 'grab';
             });
+            
             row.addEventListener('mouseleave', () => {
                 // Only resume on hover if not on touch device
                 if ('ontouchstart' in window) return;
+                
+                // Clear any pending wheel timeout
+                if (wheelTimeout) {
+                    clearTimeout(wheelTimeout);
+                    wheelTimeout = null;
+                }
                 
                 // Compute current transform
                 const computedStyle = window.getComputedStyle(track);
@@ -364,79 +375,168 @@ document.addEventListener('DOMContentLoaded', function() {
                 track.style.animation = lastAnimation;
                 track.style.animationPlayState = 'running';
                 row.classList.remove('carousel-paused');
+                
+                // Reset cursor
+                row.style.cursor = '';
             });
 
-            // Mouse wheel horizontal scroll
+            // Mouse wheel horizontal scroll - improved for better UX
             row.addEventListener('wheel', (e) => {
+                // Only handle horizontal scrolling when carousel is paused and user intends horizontal scroll
                 if (!row.classList.contains('carousel-paused')) return;
-                e.preventDefault();
-                const style = window.getComputedStyle(track);
-                const matrix = new DOMMatrix(style.transform);
-                let currentX = matrix.m41;
-                let delta = e.deltaY || e.deltaX;
-                if (row.classList.contains('reverse')) delta = -delta;
-                track.style.transition = 'transform 0.2s';
-                track.style.transform = `translateX(${currentX - delta}px)`;
-                setTimeout(() => { track.style.transition = ''; }, 200);
+                
+                // Check if this is primarily a horizontal scroll gesture
+                const isHorizontalScroll = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+                const isShiftScroll = e.shiftKey && e.deltaY !== 0;
+                
+                // Only prevent default and handle if it's clearly a horizontal scroll intention
+                if (isHorizontalScroll || isShiftScroll) {
+                    e.preventDefault();
+                    
+                    // Clear any existing timeout
+                    if (wheelTimeout) {
+                        clearTimeout(wheelTimeout);
+                    }
+                    
+                    const style = window.getComputedStyle(track);
+                    const matrix = new DOMMatrix(style.transform);
+                    let currentX = matrix.m41;
+                    
+                    // Use deltaX for horizontal scroll, or deltaY with shift key
+                    let delta = isHorizontalScroll ? e.deltaX : e.deltaY;
+                    
+                    // Apply sensitivity scaling for smoother scrolling
+                    delta *= 0.5;
+                    
+                    if (row.classList.contains('reverse')) delta = -delta;
+                    
+                    track.style.transition = 'transform 0.1s ease-out';
+                    track.style.transform = `translateX(${currentX - delta}px)`;
+                    
+                    // Set timeout to remove transition after scrolling stops
+                    wheelTimeout = setTimeout(() => { 
+                        track.style.transition = ''; 
+                        wheelTimeout = null;
+                    }, 100);
+                }
             }, { passive: false });
 
-            // Drag to scroll (Mouse events)
+            // Drag to scroll (Mouse events) - improved responsiveness
             row.addEventListener('mousedown', (e) => {
                 if (!row.classList.contains('carousel-paused')) return;
+                
+                // Prevent text selection during drag
+                e.preventDefault();
+                
                 isDragging = true;
                 startX = e.pageX;
                 const style = window.getComputedStyle(track);
                 const matrix = new DOMMatrix(style.transform);
                 scrollLeft = matrix.m41;
                 row.classList.add('dragging');
+                
+                // Add cursor style for better UX
+                row.style.cursor = 'grabbing';
+                document.body.style.cursor = 'grabbing';
             });
+            
             window.addEventListener('mousemove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
+                
                 const x = e.pageX;
-                const walk = x - startX;
+                const walk = (x - startX) * 1.2; // Slightly increase sensitivity
                 track.style.transform = `translateX(${scrollLeft + walk}px)`;
             });
+            
             window.addEventListener('mouseup', () => {
                 if (isDragging) {
                     isDragging = false;
                     row.classList.remove('dragging');
+                    row.style.cursor = 'grab';
+                    document.body.style.cursor = '';
                 }
             });
 
-            // Touch events for mobile devices
+            // Touch events for mobile devices - improved gesture detection
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchMoveX = 0;
+            let touchMoveY = 0;
+            let isHorizontalGesture = false;
+            let touchGestureDetected = false;
+            
             row.addEventListener('touchstart', (e) => {
-                // Always pause animation on touch
-                lastAnimation = track.style.animation;
-                const computedStyle = window.getComputedStyle(track);
-                const matrix = new DOMMatrix(computedStyle.transform);
-                lastKnownX = matrix.m41;
-                track.style.animation = 'none';
-                track.style.transform = `translateX(${lastKnownX}px)`;
-                row.classList.add('carousel-paused');
+                touchStartX = e.touches[0].pageX;
+                touchStartY = e.touches[0].pageY;
+                touchMoveX = touchStartX;
+                touchMoveY = touchStartY;
+                isHorizontalGesture = false;
+                touchGestureDetected = false;
                 
-                isDragging = true;
-                startX = e.touches[0].pageX;
+                // Store initial scroll position
                 const style = window.getComputedStyle(track);
                 const transformMatrix = new DOMMatrix(style.transform);
                 scrollLeft = transformMatrix.m41;
-                row.classList.add('dragging');
-            });
+                
+                // Don't pause animation immediately - wait for gesture detection
+            }, { passive: true });
             
             row.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX;
-                const walk = x - startX;
-                track.style.transform = `translateX(${scrollLeft + walk}px)`;
-            });
+                if (touchGestureDetected) {
+                    if (isHorizontalGesture) {
+                        e.preventDefault();
+                        const x = e.touches[0].pageX;
+                        const walk = x - touchStartX;
+                        track.style.transform = `translateX(${scrollLeft + walk}px)`;
+                    }
+                    return;
+                }
+                
+                touchMoveX = e.touches[0].pageX;
+                touchMoveY = e.touches[0].pageY;
+                
+                const deltaX = Math.abs(touchMoveX - touchStartX);
+                const deltaY = Math.abs(touchMoveY - touchStartY);
+                
+                // Detect gesture direction after sufficient movement
+                if (deltaX > 10 || deltaY > 10) {
+                    touchGestureDetected = true;
+                    isHorizontalGesture = deltaX > deltaY && deltaX > 15;
+                    
+                    if (isHorizontalGesture) {
+                        // Pause animation for horizontal gesture
+                        lastAnimation = track.style.animation;
+                        const computedStyle = window.getComputedStyle(track);
+                        const matrix = new DOMMatrix(computedStyle.transform);
+                        lastKnownX = matrix.m41;
+                        track.style.animation = 'none';
+                        track.style.transform = `translateX(${lastKnownX}px)`;
+                        row.classList.add('carousel-paused');
+                        
+                        isDragging = true;
+                        startX = touchStartX;
+                        scrollLeft = lastKnownX;
+                        row.classList.add('dragging');
+                        
+                        // Apply the current movement
+                        e.preventDefault();
+                        const walk = touchMoveX - touchStartX;
+                        track.style.transform = `translateX(${scrollLeft + walk}px)`;
+                    }
+                }
+            }, { passive: false });
             
             row.addEventListener('touchend', () => {
-                if (isDragging) {
+                if (isDragging && isHorizontalGesture) {
                     isDragging = false;
                     row.classList.remove('dragging');
                     // Don't resume animation automatically - wait for touch outside
                 }
+                
+                // Reset touch tracking
+                touchGestureDetected = false;
+                isHorizontalGesture = false;
             });
         });
     }, 100);

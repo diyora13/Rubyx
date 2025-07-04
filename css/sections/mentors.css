@@ -315,6 +315,8 @@
     margin-bottom: 18px;
     min-height: 240px;
     cursor: grab; /* Show grab cursor on hover */
+    /* Ensure smooth scrolling */
+    scroll-behavior: smooth;
 }
 
 .mentor-carousel-row:active {
@@ -324,6 +326,14 @@
 .mentor-carousel-row.dragging {
     cursor: grabbing;
     cursor: -webkit-grabbing;
+}
+
+.mentor-carousel-row.carousel-paused {
+    cursor: grab;
+}
+
+.mentor-carousel-row.carousel-paused:active {
+    cursor: grabbing;
 }
 
 @keyframes scrollLeftToRight {
@@ -348,7 +358,15 @@
     transition: transform 0.5s ease-out;
     /* Improve touch scrolling */
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x; /* Allow horizontal panning */
+    touch-action: pan-x; /* Allow horizontal panning only */
+    /* Prevent text selection during drag */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Prevent default touch behaviors */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Smooth transition for touch interactions */
