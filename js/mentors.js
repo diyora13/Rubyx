@@ -464,7 +464,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let touchMoveX = 0;
             let touchMoveY = 0;
             let isHorizontalGesture = false;
+            let isVerticalGesture = false;
             let touchGestureDetected = false;
+            let touchStartTime = 0;
             
             row.addEventListener('touchstart', (e) => {
                 touchStartX = e.touches[0].pageX;
@@ -472,7 +474,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 touchMoveX = touchStartX;
                 touchMoveY = touchStartY;
                 isHorizontalGesture = false;
+                isVerticalGesture = false;
                 touchGestureDetected = false;
+                touchStartTime = Date.now();
                 
                 // Store initial scroll position
                 const style = window.getComputedStyle(track);
@@ -483,27 +487,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }, { passive: true });
             
             row.addEventListener('touchmove', (e) => {
-                if (touchGestureDetected) {
-                    if (isHorizontalGesture) {
-                        e.preventDefault();
-                        const x = e.touches[0].pageX;
-                        const walk = x - touchStartX;
-                        track.style.transform = `translateX(${scrollLeft + walk}px)`;
-                    }
-                    return;
-                }
-                
                 touchMoveX = e.touches[0].pageX;
                 touchMoveY = e.touches[0].pageY;
                 
                 const deltaX = Math.abs(touchMoveX - touchStartX);
                 const deltaY = Math.abs(touchMoveY - touchStartY);
                 
+                // Only process if we have significant movement
+                if (deltaX < 5 && deltaY < 5) return;
+                
                 // Detect gesture direction after sufficient movement
-                if (deltaX > 10 || deltaY > 10) {
+                if (!touchGestureDetected && (deltaX > 10 || deltaY > 10)) {
                     touchGestureDetected = true;
+                    
+                    // More generous vertical gesture detection
+                    isVerticalGesture = deltaY > deltaX && deltaY > 8;
                     isHorizontalGesture = deltaX > deltaY && deltaX > 15;
                     
+                    // If it's clearly a vertical gesture, allow default scrolling
+                    if (isVerticalGesture) {
+                        // Don't interfere with vertical scrolling
+                        return;
+                    }
+                    
+                    // Only handle horizontal gestures
                     if (isHorizontalGesture) {
                         // Pause animation for horizontal gesture
                         lastAnimation = track.style.animation;
@@ -518,12 +525,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         startX = touchStartX;
                         scrollLeft = lastKnownX;
                         row.classList.add('dragging');
-                        
-                        // Apply the current movement
-                        e.preventDefault();
-                        const walk = touchMoveX - touchStartX;
-                        track.style.transform = `translateX(${scrollLeft + walk}px)`;
                     }
+                }
+                
+                // Handle horizontal swiping
+                if (touchGestureDetected && isHorizontalGesture && !isVerticalGesture) {
+                    e.preventDefault();
+                    const x = e.touches[0].pageX;
+                    const walk = x - touchStartX;
+                    track.style.transform = `translateX(${scrollLeft + walk}px)`;
                 }
             }, { passive: false });
             
@@ -531,12 +541,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (isDragging && isHorizontalGesture) {
                     isDragging = false;
                     row.classList.remove('dragging');
-                    // Don't resume animation automatically - wait for touch outside
+                    
+                    // Auto-resume animation after a short delay if no further interaction
+                    setTimeout(() => {
+                        if (!isDragging && row.classList.contains('carousel-paused')) {
+                            const computedStyle = window.getComputedStyle(track);
+                            const matrix = new DOMMatrix(computedStyle.transform);
+                            const currentX = matrix.m41;
+                            
+                            // Resume animation from current position
+                            track.style.transform = `translateX(${currentX}px)`;
+                            track.offsetHeight; // Force reflow
+                            
+                            // Restore the animation
+                            const animationName = row.classList.contains('reverse') ? 'scrollLeftToRight' : 'scrollRightToLeft';
+                            track.style.animation = `${animationName} 60s linear infinite`;
+                            track.style.animationPlayState = 'running';
+                            row.classList.remove('carousel-paused');
+                        }
+                    }, 2000);
                 }
                 
                 // Reset touch tracking
                 touchGestureDetected = false;
                 isHorizontalGesture = false;
+                isVerticalGesture = false;
             });
         });
     }, 100);
@@ -570,7 +599,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.classList.remove('carousel-paused');
             });
         }
-    });
+    }, { passive: true });
+    
+    // Add a scroll event listener to ensure carousel doesn't interfere with page scroll
+    window.addEventListener('scroll', () => {
+        // Resume any paused carousels when user scrolls the page
+        document.querySelectorAll('.mentor-carousel-row.carousel-paused').forEach(row => {
+            const track = row.querySelector('.mentor-carousel-track');
+            
+            // Get current position
+            const computedStyle = window.getComputedStyle(track);
+            const matrix = new DOMMatrix(computedStyle.transform);
+            const currentX = matrix.m41;
+            
+            // Resume animation from current position
+            track.style.transform = `translateX(${currentX}px)`;
+            track.offsetHeight; // Force reflow
+            
+            // Restore the animation
+            const animationName = row.classList.contains('reverse') ? 'scrollLeftToRight' : 'scrollRightToLeft';
+            track.style.animation = `${animationName} 60s linear infinite`;
+            track.style.animationPlayState = 'running';
+            row.classList.remove('carousel-paused');
+            row.classList.remove('dragging');
+        });
+    }, { passive: true });
     
     // Add window resize handler to ensure cards remain visible after resize
     window.addEventListener('resize', function() {
