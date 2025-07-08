@@ -1,22 +1,22 @@
 // Tutors data
 const tutors = [
     {
-        image: 'images/tutors/pexels-stefanstefancik-91227.jpg',
+        image: 'images/tutors/manan-edited.jpeg',
         name: 'Manan Diyora',
         company: 'Microsoft',
         ctc: '₹52L',
         education: 'B. Tech. From Dhirubhai Ambani Institute of Information and Communication Technology(DAIICT)',
         expertise: ['C/C++', 'DSA', 'OOPs', 'AI', 'Database', 'Backend'],
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/manandiyora/'
     },
     {
-        image: 'images/tutors/pexels-stefanstefancik-91227.jpg',
+        image: 'images/tutors/kevalghelani-edited.jpeg',
         name: 'Keval Ghelani',
         company: 'M & M Software',
         ctc: '₹12L',
         education: 'B. Tech. From Charotar University of Science and Technology(CHARUSAT)',
         expertise: ['C/C++', 'DSA', 'OOPs', 'AI', 'Frontend', 'Backend'],
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/keval-ghelani-bb614518a/'
     }
     // You can add more tutors here as needed
 ];

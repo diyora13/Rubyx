@@ -6,15 +6,15 @@ const mentors = [
         role: 'Software Engineer',
         company: 'microsoft.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/yashsakaria15b373195/'
     },
     {
         name: 'Kiran Italiya',
         photo: 'images/mentors/kiran-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Developer Engineer',
         company: 'amazon.png',
-        alumni: 'Alumni, DDU',
-        linkedin: 'https://www.linkedin.com/'
+        alumni: 'Alumni, VGEC',
+        linkedin: 'https://www.linkedin.com/in/kiran-italiya/'
     },
     {
         name: 'Hasti Doshi',
@@ -22,7 +22,7 @@ const mentors = [
         role: 'Software Developer Engineer',
         company: 'google.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/hastidoshi/'
     },
     {
         name: 'Jaimin Moradiya',
@@ -30,15 +30,15 @@ const mentors = [
         role: 'Software Engineer',
         company: 'microsoft.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/jaimin-moradiya-072833268/'
     },
     {
         name: 'Dishant Goti',
         photo: 'images/mentors/goti-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Developer Engineer',
         company: 'amazon.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/dishantgoti/'
     },
     {
         name: 'Drashti Koladiya',
@@ -46,7 +46,7 @@ const mentors = [
         role: 'Software Developer Engineer',
         company: 'google.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/drashtikoladiya/'
     },
     {
         name: 'Yash Shah',
@@ -54,7 +54,7 @@ const mentors = [
         role: 'Software Engineer',
         company: 'microsoft.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/yash-shah-29963222b/'
     },
     {
         name: 'Harsh Rajani',
@@ -62,15 +62,15 @@ const mentors = [
         role: 'Software Developer Engineer',
         company: 'google.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/harsh-rajani-095733184/'
     },
     {
         name: 'Krunal Mathukiya',
         photo: 'images/mentors/mathukiya-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Developer Engineer',
         company: 'amazon.png',
-        alumni: 'Alumni, DDU',
-        linkedin: 'https://www.linkedin.com/'
+        alumni: 'Alumni, GCET',
+        linkedin: 'https://www.linkedin.com/in/krunalmathukiya/'
     },
     {
         name: 'Sanny Dhameliya',
@@ -78,48 +78,48 @@ const mentors = [
         role: 'Technical Analyst',
         company: 'goldman-sachs.jpeg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/sanny-dhameliya-a0a82418a/'
     },
     {
         name: 'Kenil Bhingradiya',
         photo: 'images/mentors/kenil-edited.jpeg',
-        role: 'Technical Analyst',
+        role: 'Technology Associate',
         company: 'morgan-stanley.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/kenil-bhingradiya-7a4660217/'
     },
     //
     {
         name: 'Jaydeep Machhi',
         photo: 'images/mentors/jaydeep-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Engineer',
         company: 'rubrik.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/jaydeep-machhi-7bbbb9176/'
     },
     {
         name: 'Dhruvil Bhikadiya',
         photo: 'images/mentors/bhikadiya-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Engineer',
         company: 'zepto.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/dhruvil-bhikadiya-7aaa30217/'
     },
     {
         name: 'Meet Gohil',
         photo: 'images/mentors/meet-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Engineer',
         company: 'tekion.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/meetgohil/'
     },
     {
         name: 'Akshat Bhayani',
         photo: 'images/mentors/bhayani-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Engineer',
         company: 'navi.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/akshat-bhayani-67b218207/'
     },
     {
         name: 'Keval Savaliya',
@@ -127,7 +127,7 @@ const mentors = [
         role: 'Software Engineer',
         company: 'tekion.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/keval-savaliya-9ba2531b5/'
     },
     {
         name: 'Bhadrayu Bhalodia',
@@ -135,7 +135,7 @@ const mentors = [
         role: 'Software Engineer',
         company: 'tekion.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/bhadrayu-bhalodia-25aa091a9/'
     },
     {
         name: 'Kaushal Nagani',
@@ -143,7 +143,7 @@ const mentors = [
         role: 'Software Developer',
         company: 'sumo_logic.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/kaushal-nagani-14b3211aa/'
     },
     {
         name: 'Purav Kansara',
@@ -151,23 +151,23 @@ const mentors = [
         role: 'Software Engineer',
         company: 'tekion.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/purav-kansara-90aa431b0/'
     },
     {
         name: 'Akash Kothiya',
         photo: 'images/mentors/kothiya-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Developer Engineer',
         company: 'Rippling.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/akash-kothiya/'
     },
     {
         name: 'Darshan Sohaliya',
         photo: 'images/mentors/darshan-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Engineer',
         company: 'ontic.jpg',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/darshan-sohaliya-945a101b1/'
     },
     {
         name: 'Madhvi Padshala',
@@ -175,15 +175,15 @@ const mentors = [
         role: 'Software Developer Engineer',
         company: 'bny.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/madhvi-padshala-083a79206/'
     },
     {
         name: 'Nemin Shah',
         photo: 'images/mentors/nemin-edited.jpeg',
-        role: 'Software Developer',
+        role: 'Software Developer Engineer',
         company: 'phonepe.png',
         alumni: 'Alumni, DAIICT',
-        linkedin: 'https://www.linkedin.com/'
+        linkedin: 'https://www.linkedin.com/in/nemin-shah/'
     },
 ];
 

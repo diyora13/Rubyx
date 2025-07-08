@@ -60,6 +60,27 @@
     transition: color 0.3s ease;
 }
 
+.contact-link_par {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    transition: color 0.3s ease;
+    margin-top: -10px;
+}
+
+.contact-link_v1 {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    transition: color 0.3s ease;
+}
+
+.contact-link_v2 {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    transition: color 0.3s ease;
+    margin-left: 15px;
+    margin-top: -28px;
+}
+
 .contact-link:hover {
     color: #2575fc; /* Blue color on hover */
 }
