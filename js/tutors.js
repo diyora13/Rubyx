@@ -4,7 +4,7 @@ const tutors = [
         image: 'images/tutors/manan-edited.jpeg',
         name: 'Manan Diyora',
         company: 'Microsoft',
-        ctc: '₹52L',
+        ctc: '₹60L',
         education: 'B. Tech. From Dhirubhai Ambani Institute of Information and Communication Technology(DAIICT)',
         expertise: ['C/C++', 'DSA', 'OOPs', 'AI', 'Database', 'Backend'],
         linkedin: 'https://www.linkedin.com/in/manandiyora/'

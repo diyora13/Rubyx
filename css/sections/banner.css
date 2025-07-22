@@ -24,9 +24,10 @@
 }
 
 .ai-banner-content {
-    display: inline-block;
-    white-space: nowrap;
-    animation: banner-scroll 15s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .ai-banner-text {
@@ -35,6 +36,7 @@
     align-items: center;
     transition: opacity 0.5s ease;
     animation: textColorPulse 8s infinite;
+    white-space: nowrap;
 }
 
 /* Subtle text color animation */
@@ -103,10 +105,7 @@
     100% { transform: translateY(0px); }
 }
 
-@keyframes banner-scroll {
-    0% { transform: translateX(100vw); }
-    100% { transform: translateX(-100%); }
-}
+/* Removed banner-scroll animation - text is now static and centered */
 
 @keyframes pulse {
     0% { transform: scale(1); opacity: 1; }
