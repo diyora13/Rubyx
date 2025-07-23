@@ -49,7 +49,8 @@
             </div>
             <ul id="nav-links" class="mobile-nav-links">
                 <li><a href="#home" class="mobile-nav-item">Home</a></li>
-                <li><a href="#about" class="mobile-nav-item">About Us</a></li>
+                <li><a href="hackathon.html" class="mobile-nav-item">Hackathon</a></li>
+                <li><a href="#about" class="mobile-nav-item">About</a></li>
                 <li><a href="#courses" class="mobile-nav-item">Course</a></li>
                 <li><a href="#tutors" class="mobile-nav-item">Tutors</a></li>
                 <li><a href="#mentors" class="mobile-nav-item">Mentors</a></li>
@@ -165,7 +166,7 @@
             <div class="enroll-content">
                 <h2>Book Your Appointment</h2>
                 <p class="enroll-subtitle">Fill the form below to schedule a consultation with our expert team</p>
-                <div class="form-container">                    <form id="enroll-form">
+                <div class="appointment-form-container">                    <form id="enroll-form">
                         <div class="form-group">
                             <input type="text" id="name" placeholder="Your Full Name" required>
                             <p class="error-message" id="name-error"></p>
@@ -262,10 +263,19 @@
 <div class="footer-bottom">
     <p>&copy; 2025 Rubyx IT Institute. All rights reserved.</p>
 </div>
+    <!-- Feature Flags Script - Load first to control navigation -->
+    <script src="js/featureFlags.js"></script>
     <script src="js/script.js"></script>
     <script src="js/mentors.js"></script>
     <script src="js/courses.js"></script>
     <script src="js/about.js"></script>
     <script src="js/tutors.js"></script>
+    
+    <script>
+        // Initialize feature flags when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initFeatureFlags();
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Registration | Rubyx IT Institute</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Register for Rubyx IT Institute Hackathon - Showcase your skills and compete with the best developers">
+    <meta name="keywords" content="Rubyx Hackathon, coding competition, software development, programming contest, tech event">
+    <meta name="author" content="Rubyx IT Institute | Learn from Achievers!">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rubyx.co.in/hackathon.html">
+    <meta property="og:title" content="Hackathon Registration | Rubyx IT Institute">
+    <meta property="og:description" content="Register for Rubyx IT Institute Hackathon - Showcase your skills and compete with the best developers">
+    <meta property="og:image" content="https://rubyx.co.in/images/logo/rubyx_logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rubyx.co.in/hackathon.html">
+    <meta property="twitter:title" content="Hackathon Registration | Rubyx IT Institute">
+    <meta property="twitter:description" content="Register for Rubyx IT Institute Hackathon - Showcase your skills and compete with the best developers">
+    <meta property="twitter:image" content="https://rubyx.co.in/images/logo/rubyx_logo.png">
+
+    <!-- Favicon for browser tab -->
+    <link rel="icon" type="image/png" sizes="108x108" href="https://rubyx.co.in/images/logo/rubyx_logo.png">
+    <link rel="apple-touch-icon" href="https://rubyx.co.in/images/logo/rubyx_logo.png">
+    <meta name="theme-color" content="#6a11cb">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sections/hackathon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hackathon-header">
+        <nav>
+            <div class="logo">
+                <img src="images/logo/rubyx_noBackground.png" alt="Rubyx Logo">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Event Info Banner -->
+    <section class="event-info-banner">
+        <div class="event-content">
+            <div class="event-header">
+                <h1>
+                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-code"></i>
+                        Rubyx Hackathon 2025
+                    </span>
+                </h1>
+                <p class="event-subtitle">Code. Create. Compete.</p>
+            </div>
+            
+            <div class="event-schedule">
+                <div class="schedule-day">
+                    <div class="day-header">
+                        <h3><i class="fas fa-calendar-day"></i> Day 1 - AI Training Session</h3>
+                    </div>
+                    <div class="day-info">
+                        <p><strong>Date:</strong> <time datetime="2025-08-22">August 22, 2025 (Friday)</time></p>
+                        <p><strong>Time:</strong> <time datetime="09:00">3:00 PM</time> - <time datetime="18:00">6:00 PM</time></p>
+                        <p><strong>Focus:</strong> AI Training & Guidance </p>
+                    </div>
+                </div>
+                
+                <div class="schedule-day">
+                    <div class="day-header">
+                        <h3><i class="fas fa-trophy"></i> Day 2 - Hackathon</h3>
+                    </div>
+                    <div class="day-info">
+                        <p><strong>Date:</strong> <time datetime="2025-08-23">August 23, 2025 (Saturday)</time></p>
+                        <p><strong>Time:</strong> <time datetime="08:00">3:00 PM</time> - <time datetime="20:00">6:00 PM</time></p>
+                        <p><strong>Focus:</strong> Game Development </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-highlights">
+                <div class="highlight">
+                    <i class="fas fa-trophy"></i>
+                    <span>₹15K+ Prizes</span>
+                </div>
+                <div class="highlight">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Rubyx IT Institute, Surat</span>
+                </div>
+                <div class="highlight">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </div>
+            </div>
+            
+            <!-- Registration CTA Button -->
+            <div class="cta-section">
+                <button id="register-btn" class="register-cta">
+                    <i class="fas fa-rocket"></i>
+                    Register Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section class="registration-section">
+        <div class="registration-container">
+            <div class="form-header">
+                <h2>
+                    <i class="fas fa-user-plus"></i>
+                    Register for Hackathon
+                </h2>
+                <p class="form-subtitle">Fill in your details to participate in this exciting Hackathon</p>
+            </div>
+
+            <div class="hackathon-form-container">
+                <form id="hackathon-form" class="hackathon-form">
+                    <!-- Full Name -->
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="fullName">
+                                <i class="fas fa-user"></i>
+                                Full Name *
+                            </label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            <p class="error-message" id="fullName-error"></p>
+                        </div>
+                    </div>
+
+                    <!-- Phone and Email -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i>
+                                Phone Number *
+                            </label>
+                            <div class="phone-input-container">
+                                <div class="country-code-dropdown">
+                                    <div class="selected-code" id="selected-code">
+                                        <img src="https://flagcdn.com/w20/in.png" alt="India flag" id="selected-flag">
+                                        <span id="selected-code-text">+91</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="country-dropdown" id="country-dropdown">
+                                        <div class="country-option" data-code="+91" data-country="in">
+                                            <img src="https://flagcdn.com/w20/in.png" alt="India flag">
+                                            <span>India (+91)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                            </div>
+                            <p class="error-message" id="phone-error"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i>
+                                Email Address *
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                            <p class="error-message" id="email-error"></p>
+                        </div>
+                    </div>
+
+                    <!-- College Name and Field -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="collegeName">
+                                <i class="fas fa-university"></i>
+                                College Name *
+                            </label>
+                            <select id="collegeName" name="collegeName" required>
+                                <option value="">Select Your College</option>
+                                <option value="Dharuka">Dharuka</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <p class="error-message" id="collegeName-error"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="field">
+                                <i class="fas fa-graduation-cap"></i>
+                                Field of Study *
+                            </label>
+                            <select id="field" name="field" required>
+                                <option value="">Select Your Field</option>
+                                <option value="Computer Science Engineering">Computer Science Engineering</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Bachlor of Science (IT)">Bachlor of Science (IT)</option>
+                                <option value="Bachlor of Computer Applications">Bachlor of Computer Applications</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <p class="error-message" id="field-error"></p>
+                        </div>
+                    </div>
+
+                    <!-- Year and College ID -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">
+                                <i class="fas fa-calendar-check"></i>
+                                Current Year *
+                            </label>
+                            <select id="year" name="year" required>
+                                <option value="">Select Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                            <p class="error-message" id="year-error"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="collegeId">
+                                <i class="fas fa-id-card"></i>
+                                College ID *
+                            </label>
+                            <input type="text" id="collegeId" name="collegeId" placeholder="Your College ID/Roll Number" required>
+                            <p class="error-message" id="collegeId-error"></p>
+                        </div>
+                    </div>
+
+                    <!-- LinkedIn ID (Optional) -->
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="linkedinId">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn Profile (For Certificates)
+                            </label>
+                            <input type="url" id="linkedinId" name="linkedinId" placeholder="https://linkedin.com/in/yourprofile">
+                            <p class="error-message" id="linkedinId-error"></p>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <button type="submit" id="submit-btn" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Register for Hackathon
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="form-response" class="form-response">
+                    <!-- Submission states will be shown here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="images/logo/rubyxlogowithname_grey.png" alt="Rubyx Logo" class="footer-logo">
+                <p class="footer-tagline">Learn from Achievers!</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#courses">Course</a></li>
+                    <li><a href="index.html#tutors">Tutors</a></li>
+                    <li><a href="index.html#mentors">Mentors</a></li>
+                    <li><a href="index.html#enroll">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <a href="https://maps.app.goo.gl/SpEHsViw1hzPMHRr7" target="_blank" class="contact-link">
+                    <p class="contact-link"><i class="fas fa-map-marker-alt"></i> Shree Hari Van, Opp. Aksharvadi, Ved Road, Surat, Gujarat.</p>
+                </a>
+                <a href="mailto:admin@rubyx.co.in" class="contact-link">
+                    <p class="contact-link"><i class="fas fa-envelope"></i> admin@rubyx.co.in</p>
+                </a>
+                <a class="contact-link_par">
+                    <p> <a href="tel:+917698331924" class="contact-link contact-link_v1"><i class="fas fa-phone-alt" style="margin-left: -10px; margin-right: 5px;"></i> +91 76983 31924</p>
+                    <p> <a href="tel:+919687589897" class="contact-link contact-link_v2"> +91 96875 89897</p>
+                </a>
+                <div class="social-media">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com/rubyx.co.in" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Rubyx IT Institute. All rights reserved.</p>
+    </div>
+
+    <script src="js/hackathon.js"></script>
+</body>
+</html>

@@ -74,16 +74,29 @@ function pauseAutoSlideAndResume() {
 });
 // Swipe/drag logic for desktop and mobile
 let startX = 0;
+let startY = 0;
 let isDragging = false;
+let hasMoved = false;
+
 imageContainer.addEventListener('mousedown', (e) => {
     isDragging = true;
+    hasMoved = false;
     startX = e.pageX;
+    startY = e.pageY;
 });
+
 imageContainer.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    const diff = e.pageX - startX;
-    if (Math.abs(diff) > 50) {
-        if (diff > 0) {
+    const diffX = e.pageX - startX;
+    const diffY = e.pageY - startY;
+    
+    // Check if user has moved significantly
+    if (Math.abs(diffX) > 10 || Math.abs(diffY) > 10) {
+        hasMoved = true;
+    }
+    
+    if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
             prevImage();
         } else {
             nextImage();
@@ -94,17 +107,31 @@ imageContainer.addEventListener('mousemove', (e) => {
 });
 window.addEventListener('mouseup', () => {
     isDragging = false;
+    // Reset hasMoved after a short delay to allow click event to process
+    setTimeout(() => {
+        hasMoved = false;
+    }, 50);
 });
 // Touch events for mobile
 imageContainer.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     isDragging = true;
+    hasMoved = false;
 });
+
 imageContainer.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    const diff = e.touches[0].clientX - startX;
-    if (Math.abs(diff) > 40) {
-        if (diff > 0) {
+    const diffX = e.touches[0].clientX - startX;
+    const diffY = e.touches[0].clientY - startY;
+    
+    // Check if user has moved significantly
+    if (Math.abs(diffX) > 10 || Math.abs(diffY) > 10) {
+        hasMoved = true;
+    }
+    
+    if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
             prevImage();
         } else {
             nextImage();
@@ -115,7 +142,20 @@ imageContainer.addEventListener('touchmove', (e) => {
 });
 imageContainer.addEventListener('touchend', () => {
     isDragging = false;
+    // Reset hasMoved after a short delay to allow click event to process
+    setTimeout(() => {
+        hasMoved = false;
+    }, 50);
 });
+// Add click handler for opening link
+imageContainer.addEventListener('click', (e) => {
+    // Only trigger link if not dragging/swiping and user hasn't moved significantly
+    if (!hasMoved && !isDragging) {
+        // Change this URL to your desired link
+        window.open('hackathon.html', '_blank');
+    }
+});
+
 // Start the image rotation
 document.addEventListener('DOMContentLoaded', function() {
     startAutoSlide();
