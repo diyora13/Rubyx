@@ -74,6 +74,13 @@
 
 .form-container {
     max-width: 700px;
+    width: 550px; /* Specific width for appointment booking */
+    margin: 0 auto;
+}
+
+/* Specific class for appointment booking form */
+.appointment-form-container {
+    max-width: 700px;
     width: 550px;
     margin: 0 auto;
 }
@@ -445,6 +452,12 @@
         font-size: 1rem;
     }
     
+    .form-container,
+    .appointment-form-container {
+        width: 100%;
+        max-width: 100%;
+    }
+    
     .phone-input-container {
         flex-direction: row; /* Keep it as row for better layout */
         align-items: center;
@@ -487,6 +500,12 @@
     .form-group input, .form-group select {
         padding: 12px 14px;
         font-size: 0.95rem;
+    }
+    
+    .form-container,
+    .appointment-form-container {
+        width: 100%;
+        max-width: 100%;
     }
     
     .phone-input-container {
