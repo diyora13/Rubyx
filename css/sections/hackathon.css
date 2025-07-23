@@ -54,16 +54,6 @@
     position: relative;
 }
 
-.event-info-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    pointer-events: none;
-}
 
 .event-content {
     max-width: 1200px;
@@ -893,4 +883,415 @@
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+/* Mobile Full Screen Layout - Two Screen Design */
+@media (max-width: 768px) {
+    /* Reset body and html for full screen mobile experience */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Mobile Header - Reduced Height */
+    .hackathon-header {
+        height: 50px;
+        padding: 5px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1001;
+    }
+
+    .hackathon-header .logo img {
+        height: 30px;
+    }
+
+    /* First Full Screen - Event Info Banner */
+    .event-info-banner {
+        height: 100vh;
+        min-height: 100vh;
+        padding: 50px 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .event-content {
+        height: auto;
+        max-height: calc(100vh - 50px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+        overflow-y: auto;
+    }
+
+    /* Event Header Mobile */
+    .event-header h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .event-header h1 i {
+        font-size: 2rem;
+    }
+
+    .event-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    /* Schedule Cards - Stacked Vertically */
+    .event-schedule {
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px 0;
+        padding: 0 10px;
+    }
+
+    .schedule-day {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+        transform: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .schedule-day:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .day-header h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+
+    .day-header i {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
+
+    .day-info p {
+        font-size: 0.9rem;
+        margin: 6px 0;
+    }
+
+    /* Event Highlights - Mobile Stack */
+    .event-highlights {
+        flex-direction: column;
+        gap: 12px;
+        margin: 20px 0;
+        padding: 0 10px;
+    }
+
+    .highlight {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        border-radius: 25px;
+        justify-content: center;
+    }
+
+    .highlight i {
+        font-size: 1.1rem;
+    }
+
+    /* CTA Button - Mobile */
+    .register-cta {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        margin-top: 20px;
+        width: auto;
+        max-width: 250px;
+        border-radius: 25px;
+    }
+
+    .register-cta:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) rotate(-45deg) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) rotate(-45deg) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) rotate(-45deg) translateY(-5px);
+        }
+    }
+
+    /* Second Full Screen - Registration Section */
+    .registration-section {
+        min-height: 100vh;
+        height: auto;
+        padding: 60px 15px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .registration-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+        overflow: visible;
+    }
+
+    .registration-container::before,
+    .registration-container::after {
+        display: none;
+    }
+
+    /* Form Header Mobile */
+    .form-header {
+        padding: 20px 15px;
+        margin: 0 -15px 20px;
+        border-radius: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .form-header h2 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+
+    .form-header h2 i {
+        font-size: 1.6rem;
+    }
+
+    .form-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Form Container Mobile */
+    .hackathon-form-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px 15px;
+    }
+
+    /* Form Rows Mobile - Single Column */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 5px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .form-group.full-width {
+        width: 100%;
+    }
+
+    /* Form Labels Mobile */
+    .form-group label {
+        font-size: 0.9rem;
+        padding-left: 12px;
+        margin-bottom: 8px;
+    }
+
+    .form-group label::before {
+        width: 3px;
+        height: 16px;
+    }
+
+    .form-group label i {
+        font-size: 1rem;
+        width: 16px;
+    }
+
+    /* Form Inputs Mobile */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 15px;
+        font-size: 16px; /* Prevent zoom on iOS */
+        border-radius: 8px;
+        border: 2px solid #e8ecf4;
+        background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        transform: none;
+    }
+
+    /* Phone Input Mobile */
+    .phone-input-container {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    .selected-code {
+        min-width: 80px;
+        padding: 12px 10px;
+        font-size: 14px;
+        height: auto;
+    }
+
+    .selected-code img {
+        width: 18px;
+        height: 12px;
+    }
+
+    .phone-input-container input {
+        font-size: 16px;
+        padding: 12px 15px;
+        height: auto;
+    }
+
+    /* Country Dropdown Mobile */
+    .country-dropdown {
+        max-height: 180px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .country-option {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .country-option img {
+        width: 18px;
+        height: 12px;
+    }
+
+    /* Submit Button Mobile */
+    .submit-btn {
+        padding: 15px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        margin-top: 20px;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .submit-btn i {
+        font-size: 1.1rem;
+    }
+
+    /* Error Messages Mobile */
+    .error-message {
+        font-size: 0.8rem;
+        margin-top: 5px;
+        padding-left: 12px;
+    }
+
+    /* Form Response Mobile */
+    .form-response {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Footer Mobile - If exists */
+    .footer {
+        padding: 30px 15px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-bottom {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Small Mobile Screens - Extra Adjustments */
+@media (max-width: 480px) {
+    .event-header h1 {
+        font-size: 1.9rem;
+    }
+
+    .event-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .schedule-day {
+        padding: 12px;
+    }
+
+    .day-header h3 {
+        font-size: 1rem;
+    }
+
+    .day-info p {
+        font-size: 0.85rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .hackathon-form-container {
+        padding: 15px 12px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 10px 12px;
+    }
+
+    .register-cta {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Very Small Screens */
+@media (max-width: 360px) {
+    .event-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .hackathon-form-container {
+        padding: 12px 10px;
+    }
+
+    .form-header {
+        padding: 15px 10px;
+    }
+
+    .schedule-day {
+        padding: 10px;
+    }
 }
