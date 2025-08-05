@@ -317,8 +317,7 @@ function initializeFormSubmission() {
                 year: document.getElementById('year').value,
                 collegeId: document.getElementById('collegeId').value.trim(),
                 linkedinId: document.getElementById('linkedinId').value.trim(),
-                countryCode: document.getElementById('selected-code-text').textContent,
-                registrationDate: new Date().toISOString()
+                countryCode: document.getElementById('selected-code-text').textContent
             };
 
             // Submit to Google Apps Script
@@ -372,7 +371,7 @@ function initializeFormSubmission() {
 async function submitToGoogleScript(formData) {
     // Replace this URL with your actual Google Apps Script Web App URL
     // Get this URL after deploying your script as a web app
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRpHuWLKHZFtzTcUCZD0E6ypW2CcqOY8xq0g0-QCA0t4hzsMwMOqPmdXZvd0daX40k/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKI8KF4pGIpks4qKnO5MwV0pgKOlXzBmzqxZWNiKHwnjz3eOejw5sQnB87cNzzei0Y/exec';
     
     try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
