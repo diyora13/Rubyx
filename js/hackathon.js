@@ -371,7 +371,7 @@ function initializeFormSubmission() {
 async function submitToGoogleScript(formData) {
     // Replace this URL with your actual Google Apps Script Web App URL
     // Get this URL after deploying your script as a web app
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKI8KF4pGIpks4qKnO5MwV0pgKOlXzBmzqxZWNiKHwnjz3eOejw5sQnB87cNzzei0Y/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUALneIaoAJ0DBgN_mMgCIFBgWtyYS5zZYkARTuuRGs5NBpvIRLJLxyo3TdjK7KbI5/exec';
     
     try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
