@@ -349,8 +349,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const name = nameInput.value;
                 const phone = countryCode + phoneInput.value;
                 const email = emailInput.value;
-                
-                fetch("https://script.google.com/macros/s/AKfycbzeqae9A-UyIvcCMOxXrqm6qLEofWod47gYhiSqu4xqQUuiBjmMQDVSAHCzJDgp5qza/exec", {
+                        
+                fetch("https://script.google.com/macros/s/AKfycbz-yEzOhXjJZuT0hw-soMl3IJ6wJSs9svf9k2JOSevbkUIxqDtGba4gvMrsIpR6nZNR/exec", {
                     method: "POST",
                     mode: "no-cors",
                     headers: { "Content-Type": "application/json" },
