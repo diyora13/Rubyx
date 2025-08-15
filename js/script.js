@@ -1,8 +1,8 @@
 // Image Slider for Hero Section
 // Image size = 1370x1190
 const heroImages = [
-    "images/homeposters/rubyx_grey_back.png",
-    "images/homeposters/hiring.png"
+    "images/homeposters/AI Learning 2025.png"
+    // "images/homeposters/rubyx_grey_back.png"
 ];
 
 let currentImageIndex = 0;

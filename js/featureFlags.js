@@ -2,7 +2,7 @@
  * Simple Feature Flag for Hackathon
  * Change this value to show/hide hackathon navbar link
  */
-const HACKATHON_ENABLED = false; // Set to false to hide hackathon from navbar
+const HACKATHON_ENABLED = true; // Set to false to hide hackathon from navbar
 
 /**
  * Initialize navbar control
