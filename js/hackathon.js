@@ -130,32 +130,6 @@ function validateSelect(input, errorElement, fieldName) {
     }
 }
 
-function validateCollegeId(input, errorElement) {
-    const collegeId = input.value.trim();
-    
-    if (collegeId === '') {
-        showError(errorElement, 'College ID is required');
-        input.classList.add('invalid');
-        input.classList.remove('valid');
-        return false;
-    } else if (collegeId.length < 3) {
-        showError(errorElement, 'College ID must be at least 3 characters long');
-        input.classList.add('invalid');
-        input.classList.remove('valid');
-        return false;
-    } else if (collegeId.length > 20) {
-        showError(errorElement, 'College ID cannot exceed 20 characters');
-        input.classList.add('invalid');
-        input.classList.remove('valid');
-        return false;
-    } else {
-        clearError(errorElement);
-        input.classList.remove('invalid');
-        input.classList.add('valid');
-        return true;
-    }
-}
-
 function validateLinkedIn(input, errorElement) {
     const linkedin = input.value.trim();
     
@@ -198,7 +172,6 @@ function initializeFormValidation() {
     const collegeNameSelect = document.getElementById('collegeName');
     const fieldSelect = document.getElementById('field');
     const yearSelect = document.getElementById('year');
-    const collegeIdInput = document.getElementById('collegeId');
     const linkedinInput = document.getElementById('linkedinId');
 
     // Add real-time validation
@@ -233,11 +206,6 @@ function initializeFormValidation() {
         yearSelect.addEventListener('change', () => {
             validateSelect(yearSelect, document.getElementById('year-error'), 'Current year');
         });
-    }
-
-    if (collegeIdInput) {
-        collegeIdInput.addEventListener('input', () => validateCollegeId(collegeIdInput, document.getElementById('collegeId-error')));
-        collegeIdInput.addEventListener('blur', () => validateCollegeId(collegeIdInput, document.getElementById('collegeId-error')));
     }
 
     if (linkedinInput) {
@@ -283,18 +251,13 @@ function initializeFormSubmission() {
             document.getElementById('year-error'),
             'Current year'
         );
-        const collegeIdValid = validateCollegeId(
-            document.getElementById('collegeId'),
-            document.getElementById('collegeId-error')
-        );
         const linkedinValid = validateLinkedIn(
             document.getElementById('linkedinId'),
             document.getElementById('linkedinId-error')
         );
 
         const allValid = fullNameValid && phoneValid && emailValid && 
-                        collegeNameValid && fieldValid && yearValid && 
-                        collegeIdValid && linkedinValid;
+                        collegeNameValid && fieldValid && yearValid && linkedinValid;
 
         if (!allValid) {
             showFormResponse('error', 'Please correct the errors above and try again.');
@@ -315,7 +278,6 @@ function initializeFormSubmission() {
                 collegeName: document.getElementById('collegeName').value,
                 field: document.getElementById('field').value,
                 year: document.getElementById('year').value,
-                collegeId: document.getElementById('collegeId').value.trim(),
                 linkedinId: document.getElementById('linkedinId').value.trim(),
                 countryCode: document.getElementById('selected-code-text').textContent
             };
