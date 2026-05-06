@@ -1,6 +1,7 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
 const qs = require('querystring');
+const { CookieJar } = require('tough-cookie');
+const { wrapper } = require('axios-cookiejar-support');
 
 module.exports = async function (context, req) {
     const seat = req.query.seat || (req.body && req.body.seat);
@@ -16,53 +17,54 @@ module.exports = async function (context, req) {
 
     const initChar = seat.charAt(0).toUpperCase();
     const seatNo = seat.substring(1);
-    
-    const indexUrl = classType === 'SSC' ? 'https://www.gseb.org/' : 'https://www.gseb.org/Result/Index';
-    const postUrl = classType === 'SSC' ? 'https://www.gseb.org/Result/SSCResultView' : 'https://www.gseb.org/Result/ResultView';
 
-    const browserUA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+    // Match the working PowerShell exactly
+    const indexUrl = 'https://gseb.org/Result/';
+    const postUrl = 'https://gseb.org/Result/ResultView';
 
     try {
-        // 1. GET Index page and capture Cookies
-        const indexResponse = await axios.get(indexUrl, {
-            headers: { 'User-Agent': browserUA }
-        });
-        const setCookies = indexResponse.headers['set-cookie'] || [];
-        // Strip attributes (path=/, HttpOnly, etc.) — keep only name=value pairs
-        const cookieHeader = setCookies.map(c => c.split(';')[0]).join('; ');
-        const $ = cheerio.load(indexResponse.data);
+        const jar = new CookieJar();
+        const client = wrapper(axios.create({
+            jar,
+            withCredentials: true,
+            timeout: 30000,
+            maxRedirects: 5
+        }));
 
-        // 2. Extract Security Tokens
-        const token = $('input[name="__RequestVerificationToken"]').val();
-        const hdnCap = $('#hdnCaptchaAns').val() || $('input[name="hdnCaptcha"]').val();
-        const capLabel = $('#lblCaptcha').text();
+        // 1. GET index page — cookies auto-captured into jar
+        const indexResponse = await client.get(indexUrl);
+        const html = indexResponse.data;
 
-        // 3. Solve Math Captcha (handles both + and -)
-        const mathMatch = capLabel.replace(/&#x2B;/g, '+').match(/(\d+)\s*([\+\-])\s*(\d+)/);
-        if (!mathMatch) throw new Error("Captcha label not found");
-        const a = parseInt(mathMatch[1], 10);
-        const op = mathMatch[2];
-        const b = parseInt(mathMatch[3], 10);
-        const capAns = (op === '-' ? a - b : a + b).toString();
+        // 2. Solve "Total of N + M = ?" captcha (regex against raw HTML)
+        const captchaMatch = html.match(/Total of\s+(\d+)\s*(?:&#x2B;|\+)\s*(\d+)\s*=/);
+        if (!captchaMatch) throw new Error("Captcha challenge missing");
+        const captchaAnswer = (parseInt(captchaMatch[1], 10) + parseInt(captchaMatch[2], 10)).toString();
 
-        // 4. POST the data using the SAME session cookies
+        // 3. Extract hdnCaptchaAns (HTML-decoded)
+        const hdnMatch = html.match(/id="hdnCaptchaAns"\s+value="([^"]+)"/);
+        if (!hdnMatch) throw new Error("Captcha hash missing");
+        const hdnCaptcha = htmlDecode(hdnMatch[1]);
+
+        // 4. Extract anti-forgery token
+        const tokenMatch = html.match(/name="__RequestVerificationToken"\s+type="hidden"\s+value="([^"]+)"/);
+        if (!tokenMatch) throw new Error("Token missing");
+        const token = tokenMatch[1];
+
+        // 5. POST result lookup — same session, only Referer header
         const payload = qs.stringify({
             'InitialCharacter': initChar,
             'SeatNo': seatNo,
-            'Captcha': capAns,
-            'hdnCaptcha': hdnCap,
+            '__Invariant': 'SeatNo',
+            'Captcha': captchaAnswer,
+            'hdnCaptcha': hdnCaptcha,
             '__RequestVerificationToken': token,
-            'go': '  Go  ',
-            '__Invariant': 'SeatNo'
+            'go': '  Go  '
         });
 
-        const postResponse = await axios.post(postUrl, payload, {
+        const postResponse = await client.post(postUrl, payload, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Cookie': cookieHeader,
-                'User-Agent': browserUA,
-                'Referer': indexUrl,
-                'Origin': 'https://www.gseb.org'
+                'Referer': indexUrl
             }
         });
 
@@ -77,3 +79,14 @@ module.exports = async function (context, req) {
         };
     }
 };
+
+function htmlDecode(s) {
+    return String(s)
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
+        .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(parseInt(n, 10)));
+}
