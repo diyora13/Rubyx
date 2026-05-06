@@ -19,8 +19,8 @@ module.exports = async function (context, req) {
     const initChar = seat.charAt(0).toUpperCase();
     const seatNo = seat.substring(1);
 
-    // Match the working PowerShell exactly
-    const indexUrl = 'https://gseb.org/Result/';
+    // HSC-specific entry page; /Result/ currently routes to SSC and gives a token that ResultView rejects
+    const indexUrl = 'https://gseb.org/Result/Index';
     const postUrl = 'https://gseb.org/Result/ResultView';
 
     try {
