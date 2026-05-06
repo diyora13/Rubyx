@@ -6,6 +6,7 @@ const { wrapper } = require('axios-cookiejar-support');
 module.exports = async function (context, req) {
     const seat = req.query.seat || (req.body && req.body.seat);
     const classType = req.query.class || (req.body && req.body.class);
+    const debug = req.query.debug === '1';
 
     if (!seat || !classType) {
         context.res = {
@@ -67,6 +68,22 @@ module.exports = async function (context, req) {
                 'Referer': indexUrl
             }
         });
+
+        if (debug) {
+            const cookies = await jar.getCookies(indexUrl);
+            context.res = {
+                headers: { 'Content-Type': 'application/json' },
+                body: {
+                    cookiesAfterGet: cookies.map(c => ({ key: c.key, value: c.value, domain: c.domain, path: c.path })),
+                    extracted: { captchaAnswer, hdnCaptcha, tokenLen: token.length, tokenPreview: token.slice(0, 16) + '...' },
+                    payloadSent: payload,
+                    indexHtmlSnippet: html.slice(0, 2000),
+                    postStatus: postResponse.status,
+                    postBodySnippet: String(postResponse.data).slice(0, 4000)
+                }
+            };
+            return;
+        }
 
         context.res = {
             body: postResponse.data
