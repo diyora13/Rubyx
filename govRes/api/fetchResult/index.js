@@ -71,15 +71,22 @@ module.exports = async function (context, req) {
 
         if (debug) {
             const cookies = await jar.getCookies(indexUrl);
+            const formMatch = html.match(/<form[\s\S]*?<\/form>/i);
+            const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
+            const postBody = String(postResponse.data);
+            const postFormMatch = postBody.match(/<form[\s\S]*?<\/form>/i);
             context.res = {
                 headers: { 'Content-Type': 'application/json' },
                 body: {
                     cookiesAfterGet: cookies.map(c => ({ key: c.key, value: c.value, domain: c.domain, path: c.path })),
                     extracted: { captchaAnswer, hdnCaptcha, tokenLen: token.length, tokenPreview: token.slice(0, 16) + '...' },
+                    indexTitle: titleMatch ? titleMatch[1] : null,
+                    indexFormHtml: formMatch ? formMatch[0].slice(0, 4000) : '(no <form> found)',
                     payloadSent: payload,
-                    indexHtmlSnippet: html.slice(0, 2000),
                     postStatus: postResponse.status,
-                    postBodySnippet: String(postResponse.data).slice(0, 4000)
+                    postFinalUrl: postResponse.request?.res?.responseUrl || postResponse.config?.url,
+                    postFormHtml: postFormMatch ? postFormMatch[0].slice(0, 2000) : '(no <form> in post response)',
+                    postBodySnippet: postBody.slice(0, 2500)
                 }
             };
             return;
