@@ -5,19 +5,21 @@ const suggestions = document.getElementById('name-suggestions');
 const statusMessage = document.getElementById('certificate-status');
 const downloadButton = document.getElementById('download-certificate');
 
-let participants = [];
+let participants = (window.certificateParticipants || [])
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
 let filteredParticipants = [];
 let activeSuggestion = -1;
 let selectedParticipant = null;
 
 function parseCsv(text) {
     const lines = text.trim().split(/\r?\n/);
-    const headers = lines.shift().split(',').map(header => header.trim().toLowerCase());
-    const nameIndex = headers.indexOf('name');
-    const fileIndex = headers.indexOf('file');
+    const headers = lines.shift().split(',').map(header => header.trim().toLowerCase().replace(/^\uFEFF/, ''));
+    const nameIndex = headers.findIndex(header => ['name', 'student name'].includes(header));
+    const fileIndex = headers.findIndex(header => ['file', 'pdf filename'].includes(header));
 
     if (nameIndex === -1 || fileIndex === -1) {
-        throw new Error('CSV must contain name and file columns.');
+        throw new Error('CSV must contain Student Name and PDF Filename columns.');
     }
 
     return lines
