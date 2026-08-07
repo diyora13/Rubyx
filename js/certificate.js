@@ -5,15 +5,7 @@ const suggestions = document.getElementById('name-suggestions');
 const statusMessage = document.getElementById('certificate-status');
 const downloadButton = document.getElementById('download-certificate');
 
-let participants = [
-    { name: 'Rakesh Kalathiya', file: 'kalathiya_Rakesh.pdf' },
-    { name: 'Aarav Patel', file: 'patel_Aarav.pdf' },
-    { name: 'Diya Shah', file: 'shah_Diya.pdf' },
-    { name: 'Krish Mehta', file: 'mehta_Krish.pdf' },
-    { name: 'Nisha Desai', file: 'desai_Nisha.pdf' },
-    { name: 'Vivek Joshi', file: 'joshi_Vivek.pdf' },
-    { name: 'Ananya Trivedi', file: 'trivedi_Ananya.pdf' }
-].sort((a, b) => a.name.localeCompare(b.name));
+let participants = [];
 let filteredParticipants = [];
 let activeSuggestion = -1;
 let selectedParticipant = null;

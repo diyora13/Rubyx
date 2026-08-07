@@ -2256,6 +2256,95 @@ kbd {
         0 0 90px rgba(34, 211, 238, 0.48);
 }
 
+.qna-layout {
+    width: min(1180px, 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+    align-items: center;
+    gap: clamp(45px, 7vw, 100px);
+}
+
+.qna-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.jobs-qr-card {
+    position: relative;
+    padding: 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(20, 87, 255, 0.14);
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(7, 28, 77, 0.14);
+}
+
+.jobs-qr-card::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    z-index: -1;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 35px;
+    animation: qr-pulse 2.5s ease-out infinite;
+}
+
+@keyframes qr-pulse {
+    to { transform: scale(1.05); opacity: 0; }
+}
+
+.qr-badge {
+    width: fit-content;
+    margin: 0 auto 15px;
+    padding: 7px 12px;
+    color: #087a55;
+    font-size: 0.72rem;
+    font-weight: 900;
+    background: #e8fff5;
+    border-radius: 100px;
+}
+
+.qr-badge i {
+    margin-right: 5px;
+}
+
+.jobs-qr-card > img {
+    display: block;
+    width: min(245px, 75%);
+    aspect-ratio: 1;
+    margin: 0 auto 16px;
+    object-fit: contain;
+    background: #fff;
+    border: 10px solid #fff;
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(7, 28, 77, 0.12);
+}
+
+.jobs-qr-card h3 {
+    color: var(--navy);
+    font-size: 1.35rem;
+}
+
+.jobs-qr-card p {
+    max-width: 320px;
+    margin: 8px auto 14px;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.scan-hint {
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.scan-hint i {
+    margin-right: 5px;
+}
+
 /* Segment-specific entrance motion */
 .active[data-section="AI Era"] .reveal {
     animation-name: ai-reveal;
@@ -3039,6 +3128,15 @@ kbd {
 
     .bus-line {
         display: none;
+    }
+
+    .qna-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .jobs-qr-card {
+        width: min(390px, 100%);
+        margin: 0 auto;
     }
 }
 
