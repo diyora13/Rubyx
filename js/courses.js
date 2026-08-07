@@ -2,7 +2,7 @@
 const courseTopics = [
     {
         id: 'cpp-topic',
-        name: 'C/C++ Programming',
+        name: 'C++ & STL',
         subtopics: [
             'Variables',
             'Conditional Statement',
@@ -182,7 +182,7 @@ function toggleCourseView() {
         document.getElementById('view-more-btn').addEventListener('click', toggleCourseView);
     } else {
         // Switch to full view
-        courseContent.innerHTML = `<h3 class="course-main-heading">Full Stack Development with AI</h3>
+        courseContent.innerHTML = `<h3 class="course-main-heading">DSA + AI (System Design)</h3>
         <div class="course-container">
             <div class="major-topics"></div>
             <div class="subtopics-content"></div>
@@ -210,7 +210,7 @@ function generateCollapsedView() {
     });
     
     return `
-        <h3 class="course-main-heading">Full Stack Development with AI</h3>
+        <h3 class="course-main-heading">DSA + AI (System Design)</h3>
         <div class="collapsed-course-container">
             <div class="collapsed-topics-list">
                 ${topicsList}
