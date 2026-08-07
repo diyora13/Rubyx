@@ -35,36 +35,6 @@ const courseTopics = [
         ]
     },
     {
-        id: 'oops-topic',
-        name: 'Object-Oriented Programming',
-        subtopics: [
-            'Class & Object',
-            'Constructor & Destructor',
-            'Access Modifier',
-            'Inheritance',
-            'Escapsulation',
-            'Abstraction',
-            'Polymorphism',
-            'Function Overloading',
-            'Function Overriding',
-            'Pure Virtual Function'
-        ]
-    },
-    {
-        id: 'database-topic',
-        name: 'Database',
-        subtopics: [
-            'Database Fundamentals',
-            'SQL',
-            'NoSQL',
-            'Data Modeling',
-            'CRUD Operation',
-            'Database Realationship',
-            'ACID Property',
-            'Backup & Recovery'
-        ]
-    },
-    {
         id: 'ai-topic',
         name: 'Artificial Intelligence',
         subtopics: [
@@ -77,15 +47,21 @@ const courseTopics = [
         ]
     },
     {
-        id: 'frontend-topic',
-        name: 'Frontend Development',
+        id: 'system-design-topic',
+        name: 'System Design',
         subtopics: [
-            'Frontend Creation Using AI',
-            'HTML',
-            'CSS',
-            'JavaScript',
-            'React',
-            'API Integration'
+            'Client-Server Architecture',
+            'Scalability & Availability',
+            'Vertical & Horizontal Scaling',
+            'Load Balancing',
+            'Caching',
+            'Content Delivery Network',
+            'Database Replication',
+            'Database Sharding',
+            'Message Queues',
+            'Rate Limiting',
+            'Microservices Architecture',
+            'Monitoring & Fault Tolerance'
         ]
     },
     {
@@ -109,9 +85,9 @@ const courseTopics = [
         name: 'Projects',
         subtopics: [
             'Algorithmic Project',
-            'OOP Project',
-            'Database Project',
-            'Frontend Project',
+            'DSA Project',
+            'AI Application',
+            'System Design Project',
             'Backend Project',
             'General Project'
         ]
