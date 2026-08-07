@@ -147,15 +147,6 @@ imageContainer.addEventListener('touchend', () => {
         hasMoved = false;
     }, 50);
 });
-// Add click handler for opening link
-imageContainer.addEventListener('click', (e) => {
-    // Only trigger link if not dragging/swiping and user hasn't moved significantly
-    if (!hasMoved && !isDragging) {
-        // Change this URL to your desired link
-        window.open('hackathon.html', '_blank');
-    }
-});
-
 // Start the image rotation
 document.addEventListener('DOMContentLoaded', function() {
     startAutoSlide();
